@@ -14,8 +14,8 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
-        dd('jj');
+        //dd('jj');
+        return view('edu.photo.index');
     }
 
     /**
@@ -25,7 +25,8 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        //
+        //dd('你好');
+        return view('edu.photo.create');
     }
 
     /**
@@ -36,7 +37,8 @@ class PhotoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //保存数据
+        dd($request->all());
     }
 
     /**
