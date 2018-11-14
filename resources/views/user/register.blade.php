@@ -46,7 +46,7 @@
                         昵称
                     </label>
                     <!-- Input -->
-                    <input type="text" class="form-control" placeholder="请输入昵称">
+                    <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="请输入昵称">
                 </div>
                 {{--邮件--}}
                 <div class="form-group">
@@ -74,7 +74,7 @@
                         确认密码
                     </label>
                     <!-- Input -->
-                    <input type="password" name="password" class="form-control" placeholder="请确认密码">
+                    <input type="password" name="password_confirmation" class="form-control" placeholder="请确认密码">
                 </div>
                 {{--确认密码--}}
                 {{--验证码--}}
