@@ -10,14 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+//网站首页
+Route::get('/','HomeController@index')->name('home');
+//用户管理
+//登录
+Route::get('/login','UserController@login')->name('login');
+//注册
+Route::get('/register','UserController@register')->name('register');
+//提交注册
+Route::post('/register','UserController@store')->name('register');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-//Route::get('/edu/article/index','Edu\ArticleController@index')->name('edu.article.index');
-//Route::get('/edu/article/create','Edu\ArticleController@create')->name('edu.article.create');
-//Route::post('/edu/article/store','Edu\ArticleController@store')->name('edu.article.store');
-Route::resource('/edu/photo','Edu\PhotoController');
-
-//artisan make:controller Edu/IndexController --resource 一次性生成七个方法
-//artisan route:list 查看清单
+//发送验证码
+Route::any('/code/send','Util\CodeController@send')->name('code.send');
