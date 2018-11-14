@@ -99,7 +99,7 @@
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                        已有账号? <a href="">赶紧去登录</a>.
+                        已有账号? <a href="{{'login'}}">赶紧去登录</a>.
                     </small>
                 </div>
 

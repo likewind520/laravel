@@ -15,7 +15,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
 
-    <title>Dashkit</title>
+    <title>首页</title>
 </head>
 <body>
 
@@ -536,7 +536,7 @@
                     {{--<hr class="dropdown-divider">--}}
                     {{--<a href="sign-in.html" class="dropdown-item">Logout</a>--}}
                 {{--</div>--}}
-                <a href="" class="btn btn-white btn-sm">登录</a>
+                <a href="{{'login'}}" class="btn btn-white btn-sm">登录</a>
                 <a href="{{'register'}}" class="btn btn-white btn-sm">注册</a>
             </div>
             <!-- 用户登录注册Dropdown -->
