@@ -17,8 +17,8 @@ class UserController extends Controller
     }
     //用户提交数据
    public function store(UserRequest $request){
-
        //dd($request->all());
+
    }
 
 }

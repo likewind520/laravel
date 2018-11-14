@@ -37,8 +37,8 @@
             </p>
 
             <!-- Form -->
-            <form>
-
+            <form method="post" action="{{route('register')}}">
+                @csrf
                 <!-- Email address -->
                 <div class="form-group">
                     <!-- Label -->
