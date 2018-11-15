@@ -37,7 +37,7 @@
             </p>
 
             <!-- Form -->
-            <form method="post" action="{{route('register')}}">
+            <form method="post" action="{{route('passwordReset')}}">
             @csrf
                 {{--邮件--}}
                 <div class="form-group">
