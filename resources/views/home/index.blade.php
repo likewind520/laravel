@@ -533,7 +533,9 @@
                 <!-- Menu -->
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
-                    <a href="settings.html" class="dropdown-item">后台管理</a>
+                    @if(auth()->user()->is_admin==1)
+                    <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
+                    @endif
                     <hr class="dropdown-divider">
                     <a href="{{route('logout')}}" class="dropdown-item">注销登录</a>
                 </div>

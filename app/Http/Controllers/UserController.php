@@ -69,8 +69,6 @@ class UserController extends Controller
         }
         return redirect()->back()->with('danger', '邮箱已注册');
     }
-
-
     //注销登录
     public function logout()
     {

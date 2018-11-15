@@ -12,6 +12,7 @@
 */
 //网站首页
 Route::get('/','Home\HomeController@index')->name('home');
+Route::get('/home','Home\HomeController@index')->name('home');
 
 //用户管理
 //登录页面
@@ -31,3 +32,14 @@ Route::get('/logout','UserController@logout')->name('logout');
 
 //发送验证码
 Route::any('/code/send','Util\CodeController@send')->name('code.send');
+
+//后台路由,中间价，
+//Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin','as'=>'admin.'],function (){
+//    Route::get('index','IndexController@index')->name('index');
+//});
+Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin','as'=>'admin.'],function (){
+
+    Route::get('index','IndexController@index')->name('index');
+
+});
+
