@@ -10,6 +10,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest',[
+            'only'=>['login','loginForm','register','store','password_reset','password_resetForm']
+        ]);
+    }
+
     //登录页面
     public function login()
     {
