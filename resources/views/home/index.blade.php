@@ -525,19 +525,22 @@
 
             <!-- 用户登录注册Dropdown -->
             <div class="dropdown">
+                @auth()
                 <!-- Toggle -->
-                {{--<a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-                    {{--<img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">--}}
-                {{--</a>--}}
-                {{--<!-- Menu -->--}}
-                {{--<div class="dropdown-menu dropdown-menu-right">--}}
-                    {{--<a href="profile-posts.html" class="dropdown-item">Profile</a>--}}
-                    {{--<a href="settings.html" class="dropdown-item">Settings</a>--}}
-                    {{--<hr class="dropdown-divider">--}}
-                    {{--<a href="sign-in.html" class="dropdown-item">Logout</a>--}}
-                {{--</div>--}}
+                <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                </a>
+                <!-- Menu -->
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
+                    <a href="settings.html" class="dropdown-item">后台管理</a>
+                    <hr class="dropdown-divider">
+                    <a href="{{route('logout')}}" class="dropdown-item">注销登录</a>
+                </div>
+                @else
                 <a href="{{'login'}}" class="btn btn-white btn-sm">登录</a>
                 <a href="{{'register'}}" class="btn btn-white btn-sm">注册</a>
+                 @endauth
             </div>
             <!-- 用户登录注册Dropdown -->
         </div>
@@ -1633,6 +1636,7 @@
 
 <!-- Theme JS -->
 <script src="{{asset('org/Dashkit-1.1.2/assets')}}/js/theme.min.js"></script>
-
+{{--@include('layouts.hdjs')--}}
+{{--@include('layouts.message')--}}
 </body>
 </html>

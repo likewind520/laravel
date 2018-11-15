@@ -21,6 +21,7 @@ class UserRequest extends FormRequest
      *
      * @return array
      */
+    //规则
     public function rules()
     {
         return [

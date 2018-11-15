@@ -28,26 +28,17 @@
 
             <!-- Heading注册 -->
             <h1 class="display-4 text-center mb-3">
-                注 册
+                重置密码
             </h1>
 
             <!-- Subheading -->
             <p class="text-muted text-center mb-5">
-                Welcome to register backing net!
+                Welcome to China!
             </p>
 
             <!-- Form -->
             <form method="post" action="{{route('register')}}">
-                @csrf
-                <!-- Email address -->
-                <div class="form-group">
-                    <!-- Label -->
-                    <label>
-                        昵称
-                    </label>
-                    <!-- Input -->
-                    <input type="text" class="form-control" name="name" value="{{old('name')}}" placeholder="请输入昵称">
-                </div>
+            @csrf
                 {{--邮件--}}
                 <div class="form-group">
                     <!-- Label -->
@@ -62,7 +53,7 @@
                 <div class="form-group">
                     <!-- Label -->
                     <label>
-                        密码
+                        新密码
                     </label>
                     <!-- Input -->
                     <input type="password" name="password" class="form-control" placeholder="请输入密码">
@@ -93,14 +84,15 @@
                 </div>
                 <!-- Submit -->
                 <button class="btn btn-lg btn-block btn-primary mb-3">
-                    注 册
+                    重置密码
                 </button>
 
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
                         已有账号? <a href="{{'login'}}">赶紧去登录</a>
-                        <a href="{{route('passwordReset')}}">重置密码</a>
+                        <a href="{{route('home')}}">返回首页</a>
+
                     </small>
                 </div>
 

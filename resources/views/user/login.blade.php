@@ -67,7 +67,8 @@
                 <!-- Link -->
                 <div class="text-center">
                     <small class="text-muted text-center">
-                        没注册? <a href="{{'register'}}">赶紧去注册</a>.
+                        没注册? <a href="{{'register'}}">赶紧去注册</a>
+                        <a href="{{route('passwordReset')}}">重置密码</a>
                     </small>
                 </div>
 

@@ -15,8 +15,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    //允许进入数据库的字段
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','email_verified_at',
     ];
 
     /**
