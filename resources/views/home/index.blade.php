@@ -15,7 +15,7 @@
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
 
-    <title>首页</title>
+    <title>黎明之光</title>
 </head>
 <body>
 
@@ -244,6 +244,7 @@
 
             </div>
         </form>
+
 
         <!-- User -->
         <div class="navbar-user">
@@ -533,9 +534,9 @@
                 <!-- Menu -->
                 <div class="dropdown-menu dropdown-menu-right">
                     <a href="profile-posts.html" class="dropdown-item">{{auth()->user()->name}}</a>
-                    @if(auth()->user()->is_admin==1)
+                    @can('view',auth()->user())
                     <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
-                    @endif
+                    @endcan
                     <hr class="dropdown-divider">
                     <a href="{{route('logout')}}" class="dropdown-item">注销登录</a>
                 </div>
