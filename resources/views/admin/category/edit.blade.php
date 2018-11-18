@@ -26,7 +26,7 @@
 
                             </li>
                             <li class="nav-item">
-                                <a href="" class="nav-link active">
+                                <a href="{{route('admin.category.edit',$category)}}" class="nav-link active">
                                     编辑栏目
                                 </a>
                             </li>
@@ -35,7 +35,7 @@
                     <div class="col-auto">
 
                         <!-- Buttons -->
-                        <a href="" class="btn btn-white btn-sm">
+                        <a href="{{route('admin.category.edit',$category)}}" class="btn btn-white btn-sm">
                             编辑栏目
                         </a>
 
@@ -51,8 +51,8 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <form method="post" action="">
-                            @csrf
+                        <form method="post" action="{{route('admin.category.update',$category)}}">
+                            @csrf  @method('PUT')
                             <div class="form-group">
                                 <label for="exampleInputEmail1">栏目标题</label>
                                 <input type="text" value="{{$category->title}}" name="title" class="form-control" id="exampleInputEmail1" placeholder="">
@@ -78,5 +78,14 @@
     </div>
 @endsection
 @push('js')
-
+    <script>
+        function choose () {
+            require(['hdjs'],function (hdjs) {
+                hdjs.font(function (icon) {
+                    $('input[name=icon]').val(icon)
+                    $('#icon').addClass(icon)
+                })
+            })
+        }
+        </script>
 @endpush

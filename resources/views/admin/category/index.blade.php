@@ -72,8 +72,10 @@
                                     {{--<a href="/admin/category/{{$category['id']}}/edit" class="btn btn-white">编辑</a>--}}
                                     <a href="{{route('admin.category.edit',$category)}}" class="btn btn-white">编辑</a>
                                     {{--                                <a href="{{route('admin.category.edit',['id'=>$category['id']])}}" class="btn btn-white">编辑</a>--}}
-                                    <button onclick="" type="button" class="btn btn-white">删除</button>
-
+                                    <button onclick="del(this)" type="button" class="btn btn-white">删除</button>
+                                    <form action="{{route('admin.category.destroy',$category)}} " method="post">
+                                        @csrf @method('DELETE')
+                                    </form>
                                 </div>
                             </td>
                         </tr>
@@ -83,8 +85,18 @@
             </div>
         </div>
     </div>
-
 @endsection
+{{--push 引js的站位符--}}
 @push('js')
+    <script>
+        function del(obj) {
+            require(['hdjs','bootstrap'], function (hdjs) {
+                hdjs.confirm('确定删除吗?', function () {
+                    $(obj).next('form').submit(); //点击删除按钮触发js删除，但数据库并没有删除。需要
+                                                    //form表单将要删除的id数据以表单的方式提交到路由中的方法中删除数据库中的数据
+                })
+            })
+        }
+    </script>
 
 @endpush

@@ -71,9 +71,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(CategoryRequest $request, Category $category)
     {
-        //
+        //dd($request->all()); //修改后的后的数据
+        //dd($category); //原数据表里面的所选id的数据
+        $category->update($request->all());
+        return redirect()->route('admin.category.index')->with('success','编辑成功');
+
     }
 
     /**
@@ -84,6 +88,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->route('admin.category.index')->with('seccess','删除成功');
+
     }
 }
