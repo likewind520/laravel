@@ -20,14 +20,14 @@
                         <!-- Nav -->
                         <ul class="nav nav-tabs nav-overflow header-tabs">
                             <li class="nav-item">
-                                <a href="" class="nav-link ">
+                                <a href="{{route('admin.category.index')}}" class="nav-link ">
                                     栏目列表
                                 </a>
 
                             </li>
                             <li class="nav-item">
                                 <a href="" class="nav-link active">
-                                    添加栏目
+                                    编辑栏目
                                 </a>
                             </li>
                         </ul>
@@ -36,7 +36,7 @@
 
                         <!-- Buttons -->
                         <a href="" class="btn btn-white btn-sm">
-                            添加栏目
+                            编辑栏目
                         </a>
 
                     </div>
@@ -55,15 +55,15 @@
                             @csrf
                             <div class="form-group">
                                 <label for="exampleInputEmail1">栏目标题</label>
-                                <input type="text" value="" name="title" class="form-control" id="exampleInputEmail1" placeholder="">
+                                <input type="text" value="{{$category->title}}" name="title" class="form-control" id="exampleInputEmail1" placeholder="">
                             </div>
 
-                            <label for="exampleInputEmail1">栏目图标</label>
+                            <label for="exampleInputEmail1" >栏目图标</label>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text {{$category['icon']}}" id="icon"></span>
+                                    <span class="input-group-text  {{$category->icon}}" id="icon" ></span>
                                 </div>
-                                <input type="text" readonly name="icon" value="{{$category['icon']}}" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                <input type="text" readonly name="icon" value="{{$category->icon}}" class="form-control" aria-label="Amount (to the nearest dollar)">
                                 <div class="input-group-append">
                                     <span class="input-group-text" onclick="choose()" style="cursor: pointer">选择图标</span>
                                 </div>

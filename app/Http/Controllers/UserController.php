@@ -46,9 +46,10 @@ class UserController extends Controller
         );
         //执行登录
         $validate = $request->only('email', 'password');
+        $remember = $request->remember;
         //dd($validate);
         //\Auth::attempt()框架中自带的自动验证系统
-        if (\Auth::attempt($validate)) {
+        if (\Auth::attempt($validate,$remember)) {
             return redirect()->route('home')->with('success', '登录成功');
         }
 

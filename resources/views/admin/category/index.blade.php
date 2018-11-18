@@ -62,26 +62,28 @@
                     </tr>
                     </thead>
                     <tbody class="list">
+                    @foreach($categories as $category)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td><span class=""></span></td>
+                            <td>{{$category->id}}</td>
+                            <td>{{$category->title}}</td>
+                            <td><span class="{{$category->icon}}"></span></td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="First group">
                                     {{--<a href="/admin/category/{{$category['id']}}/edit" class="btn btn-white">编辑</a>--}}
-                                    <a href="" class="btn btn-white">编辑</a>
+                                    <a href="{{route('admin.category.edit',$category)}}" class="btn btn-white">编辑</a>
                                     {{--                                <a href="{{route('admin.category.edit',['id'=>$category['id']])}}" class="btn btn-white">编辑</a>--}}
                                     <button onclick="" type="button" class="btn btn-white">删除</button>
 
                                 </div>
                             </td>
                         </tr>
-
+                        @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 @endsection
 @push('js')
 

@@ -14,7 +14,8 @@ class CategoryRequest extends FormRequest
     public function authorize()
     {
         //先开启权限
-        return true;
+        //dd(2); 检测用户已经登录
+        return auth()->check();
     }
 
     /**
@@ -25,8 +26,22 @@ class CategoryRequest extends FormRequest
     public function rules()
     {
         //后定义规则
+        //dd(3);
+        //dd($this->all());
+        //dd($this->route('category'));
+
         return [
-            //
+            'title'=>'required|unique:categories',
+            'icon'=>'required'
+
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'title.required'=>'请输入栏目名称',
+            'title.unique'=>'栏目已存在',
+            'icon.required'=>'请选择图标'
         ];
     }
 }

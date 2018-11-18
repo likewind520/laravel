@@ -17,7 +17,11 @@ class CategoryController extends Controller
     public function index()
     {
         //dd(11);
-        return view('admin.category.index');
+        //dd(Category::all());
+        //把模型数据表里面的数据取出来
+        $categories=Category::paginate(10);
+        //compact 变量分配到页面上执行数据循环
+        return view('admin.category.index',compact('categories'));
 
     }
 
@@ -40,8 +44,12 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
-        dd(1);
-        //dd($request);
+        //dd(1);
+       //dd($request->all());
+        //调用Category模型中的create方法。把接收到的数据写入到数据表中
+        Category::create($request->all());
+        return redirect()->route('admin.category.index')->with('success','创建成功');
+
     }
 
     /**
@@ -50,20 +58,10 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category)
     {
-//        return view('admin.category.edit');
+        //dd($category);获得的是所要编辑id的内容，然后变量分配到页面上
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
