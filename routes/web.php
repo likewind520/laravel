@@ -43,3 +43,4 @@ Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin
     Route::resource('category','CategoryController');
 });
 
+

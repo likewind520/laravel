@@ -84,7 +84,10 @@
                 </table>
             </div>
         </div>
+        {{--框架自带引入分页器--}}{{--请记住，该links方法生成的HTML 与Bootstrap CSS框架兼容。--}}
+        {{$categories->links()}}
     </div>
+
 @endsection
 {{--push 引js的站位符--}}
 @push('js')

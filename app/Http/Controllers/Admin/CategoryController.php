@@ -20,6 +20,7 @@ class CategoryController extends Controller
         //dd(Category::all());
         //把模型数据表里面的数据取出来
         $categories=Category::paginate(10);
+
         //compact 变量分配到页面上执行数据循环
         return view('admin.category.index',compact('categories'));
 

@@ -75,7 +75,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="">
+                    <a class="nav-link active" href="{{route('admin.index')}}">
                         <i class="fe fe-home"></i> 黎明之光
                     </a>
                 </li>
