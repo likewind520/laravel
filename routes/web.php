@@ -13,8 +13,13 @@
 //网站首页
 Route::get('/','Home\HomeController@index')->name('home');
 //第二种方式可以app/Http/Middleware/RedirectlfAuthenticated.php
-Route::get('/home','Home\HomeController@index')->name('home');
+//Route::get('/home','Home\HomeController@index')->name('home');
+//前台
+Route::group(['prefix'=>'home','namespace'=>'Home', 'as'=>'home.'],function(){
+    Route::get('/','HomeController@index')->name('index');
+    Route::resource('Article','ArticleController');
 
+});
 //用户管理
 //登录页面
 Route::get('/login','UserController@login')->name('login');
@@ -30,6 +35,7 @@ Route::get('/passwordReset','UserController@password_reset')->name('passwordRese
 Route::post('/passwordReset','UserController@password_resetForm')->name('passwordReset');
 //注销登录
 Route::get('/logout','UserController@logout')->name('logout');
+
 
 //发送验证码
 Route::any('/code/send','Util\CodeController@send')->name('code.send');
