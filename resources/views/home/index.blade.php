@@ -903,6 +903,26 @@
     </div> <!-- / .container -->
 
 </div> <!-- / .main-content -->
+<footer class="container">
+    <hr class="my-0">
+    <div class="text-center py-6">
+        <div>
+            <p class="text-muted">我们的使命：传播互联网前沿技术，帮助更多的人实现梦想</p>
+            <small class="small text-secondary">
+                Copyright © 2010-2018 houdunren.com All Rights Reserved
+                京ICP备12048441号-3
+            </small>
+            <p class="small text-secondary">
+                <i class="fa fa-phone-square" aria-hidden="true"></i> : 010-86467608
+                <i class="fa fa-telegram ml-2" aria-hidden="true"></i> :
+                <a href="mailto:23000711698@qq.com" class="text-secondary">
+                    23000711698@qq.com
+                </a>
+                <br>
+            </p>
+        </div>
+    </div>
+</footer>
 
 <!-- JAVASCRIPT
 ================================================== -->
