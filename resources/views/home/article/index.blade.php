@@ -59,7 +59,7 @@
                                             {{--循环--}}
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <a href="project-overview.html" class="avatar avatar-4by2">
+                                                <a href="{{route('home.article.show',$article)}}" class="avatar avatar-4by2">
                                                     <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
                                                 </a>
                                             </div>
@@ -77,7 +77,7 @@
                                                     {{--Carbon 处理时间库--}}
                                                     <i class="fa fa-clock-o" aria-hidden="true">{{$article->created_at->diffForHumans()}}</i>
 
-                                                    <a href="http://www.houdunren.com/edu/topics_1.html" class="text-secondary ml-2">
+                                                    <a href="#" class="text-secondary ml-2">
                                                         <i class="fa fa-folder-o" aria-hidden="true"></i>{{$article->category->title}}</a>
                                                 </p>
                                                 {{--循环--}}

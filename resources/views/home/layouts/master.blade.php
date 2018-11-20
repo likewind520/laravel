@@ -538,8 +538,8 @@
                         <a href="{{route('logout')}}" class="dropdown-item">注销登录</a>
                     </div>
                 @else
-                    <a href="{{'login'}}" class="btn btn-white btn-sm">登录</a>
-                    <a href="{{'register'}}" class="btn btn-white btn-sm">注册</a>
+                    <a href="{{route('login')}}" class="btn btn-white btn-sm">登录</a>
+                    <a href="{{route('register')}}" class="btn btn-white btn-sm">注册</a>
                 @endauth
             </div>
             <!-- 用户登录注册Dropdown -->

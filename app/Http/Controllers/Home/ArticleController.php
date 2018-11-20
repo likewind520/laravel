@@ -51,7 +51,7 @@ class ArticleController extends Controller
         $article->category_id=$request->category_id;
         $article->content=$request['content'];
         $article->save();
-        return redirect()->route('home.Article.index')->with('success','发表成功');
+        return redirect()->route('home.article.index')->with('success','发表成功');
     }
 
 

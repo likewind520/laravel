@@ -34,7 +34,7 @@
                     <div class="row">
                         <div class="col-12 mt-5">
                             <div class="markdown editormd-html" id="content">
-                                <textarea name="content" id="" hidden cols="30" rows="10"> 哈哈哈让人</textarea>
+                                <textarea name="content" id="" hidden cols="30" rows="10">{{$article->content}}</textarea>
                             </div>
                         </div>
                     </div>
