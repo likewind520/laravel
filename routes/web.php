@@ -36,9 +36,20 @@ Route::post('/passwordReset','UserController@password_resetForm')->name('passwor
 //注销登录
 Route::get('/logout','UserController@logout')->name('logout');
 
+//会员中心
+Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function(){
+    //用户管理
+    Route::resource('user','UserController');
+});
 
-//发送验证码
-Route::any('/code/send','Util\CodeController@send')->name('code.send');
+
+//工具类
+Route::group(['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function(){
+    //发送验证码
+    Route::any('/code/send','CodeController@send')->name('code.send');
+
+});
+
 
 //后台路由,中间价，
 //middleware'=>['admin.auth']拦截

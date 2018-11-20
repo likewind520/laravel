@@ -13,11 +13,12 @@ class ArticleController extends Controller
     public function __construct(){
         $this->middleware('auth',[
             //'only'=>['create','store','edit','update','destroy'],
+            //没登录除了首页和展示页都不能操作
             'except'=>['index','show']
         ]);
     }
 
-    public function index()
+    public function index(Request $request)
     {
         //测试模型关联
         //$article=Article::find(10);
@@ -25,9 +26,15 @@ class ArticleController extends Controller
         //dd($article->category->article->toArray());
         //测试策略
         //$data=Article::find(10);
-
-        $articles=Article::latest()->paginate(10);
-        return view('home.article.index',compact('articles'));
+            //dd($request->toArray());
+        $category = $request->query('category');
+        $articles = Article::latest();
+        if($category){
+            $articles = $articles->where('category_id',$category);
+        }
+        $articles=$articles->paginate(10);
+        $categories=Category::all();
+        return view('home.article.index',compact('articles','categories'));
     }
 
 

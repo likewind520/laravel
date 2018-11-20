@@ -24,17 +24,16 @@
 
                                         <!-- Toggle -->
                                         <a href="#!" class="small text-muted dropdown-toggle" data-toggle="dropdown">
-                                            Sort order
+                                           筛选
                                         </a>
 
                                         <!-- Menu -->
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item sort" data-sort="name" href="#!">
-                                                Asc
+                                            @foreach($categories as $category)
+                                            <a class="dropdown-item sort" data-sort="name" href="{{route('home.article.index',['category'=>$category['id']])}}">
+                                                {{$category->title}}
                                             </a>
-                                            <a class="dropdown-item sort" data-sort="name" href="#!">
-                                                Desc
-                                            </a>
+                                            @endforeach
                                         </div>
 
                                     </div>
@@ -116,7 +115,10 @@
                             </ul>
                         </div>
                     </div>
-                    {{$articles->links()}}
+                    {{--自定义分页url--}}
+                    {{--手册位置：分页-->附加参数到分页链接--}}
+                    {{--appends(['参数名' => '参数值'])--}}
+                    {{$articles->appends(['category' => Request::query('category')])->links()}}
                 </div>
             </div>
         </div>

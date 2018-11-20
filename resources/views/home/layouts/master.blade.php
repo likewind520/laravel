@@ -526,7 +526,7 @@
             @auth()
                 <!-- Toggle -->
                     <a href="#" class="avatar avatar-sm avatar-online dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/profiles/avatar-1.jpg" alt="..." class="avatar-img rounded-circle">
+                        <img src="{{auth()->user()->icon}}" alt="..." class="avatar-img rounded-circle">
                     </a>
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-right">

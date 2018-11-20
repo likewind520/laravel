@@ -292,7 +292,7 @@
                     <!-- Toggle -->
                     <a href="#!" id="sidebarIconCopy" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <div class="avatar avatar-sm avatar-online">
-                            <img src="{{asset('org/images/logos.ico')}}" class="avatar-img rounded-circle" alt="...">
+                            <img src="{{auth()->user()->icon}}" class="avatar-img rounded-circle" alt="...">
                         </div>
                     </a>
                     <!-- Menu -->
