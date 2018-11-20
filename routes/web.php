@@ -17,7 +17,7 @@ Route::get('/','Home\HomeController@index')->name('home');
 //前台
 Route::group(['prefix'=>'home','namespace'=>'Home', 'as'=>'home.'],function(){
     Route::get('/','HomeController@index')->name('index');
-    Route::resource('Article','ArticleController');
+    Route::resource('article','ArticleController');
 
 });
 //用户管理

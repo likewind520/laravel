@@ -18,20 +18,22 @@
                     </div>
                 </div>
                 <!-- Form -->
-                <form class="mb-4" method="" action="">
+                <form class="mb-4" method="post" action="{{route('home.article.store')}}">
+                    @csrf
                 <!-- Project name -->
                     <div class="form-group">
                         <label>文章标题</label>
-                        <input type="text" name="title" class="form-control" value="">
+                        <input type="text" name="title" class="form-control" value="{{old('title')}}">
                     </div>
                     <div class="form-group">
                         <label>所属栏目</label>
                         <select class="form-control" name="category_id">
                             <option value="">请选择</option>
-
-                                <option value="">
-                                    通天塔
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">
+                                {{$category->title}}
                                 </option>
+                                @endforeach
                         </select>
                     </div>
                     <!-- Project description -->
@@ -40,7 +42,7 @@
                             文章内容
                         </label>
                         <div id="editormd">
-                            <textarea style="display:none;" name="content">哈哈哈</textarea>
+                            <textarea style="display:none;" name="content"></textarea>
                         </div>
                     </div>
                     <!-- Buttons -->

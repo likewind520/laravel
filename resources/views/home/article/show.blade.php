@@ -13,19 +13,19 @@
                     <div class="row">
                         <div class="col text-center">
                             <h2 class="mb-4">
-                               哈哈哈
+                                {{$article['title']}}
                             </h2>
                             <p class="text-muted mb-1 text-muted small">
                                 <a href="" class="text-secondary">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                </a><a href="" class="text-secondary">凛冽</a>
+                                </a><a href="" class="text-secondary">{{$article->user->name}}</a>
 
                                 <i class="fa fa-clock-o ml-2" aria-hidden="true"></i>
-                               哈哈哈方法
+                                {{$article->created_at->diffForHumans()}}
 
                                 <a href="" class="text-secondary">
                                     <i class="fa fa-folder-o ml-2" aria-hidden="true"></i>
-                                    哦哦哦
+                                    {{$article->category->title}}
                                 </a>
 
                             </p>
@@ -45,14 +45,14 @@
                     <div class="card-header">
                         <div class="text-center">
                             <a href="" class="text-secondary">
-                               以i
+                                {{$article->user->name}}
                             </a>
                         </div>
                     </div>
                     <div class="card-block text-center p-5">
-                        <div class="avatar avatar-xl">
+                        <div class="avatar avatar-4by2">
                             <a href="">
-                                <img src="" alt="..." class="avatar-img rounded-circle">
+                                <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded-circle">
                             </a>
                         </div>
                     </div>

@@ -244,7 +244,7 @@
             <!-- Dropdown -->
             <div class="dropdown mr-4 d-none d-lg-flex">
                 {{--<!-- Toggle -->添加文章--}}
-                <a href="{{route('home.Article.create')}}" class="text-muted" role="button">
+                <a href="{{route('home.article.create')}}" class="text-muted" role="button">
               <span class="icon">
                 <i class="fe fe-edit mr-3"></i>
               </span>
@@ -571,6 +571,9 @@
                             </a>
                         </li>
                     </ul>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('home.article.index')}}">文章列表</a>
                 </li>
             </ul>
         </div>

@@ -43,7 +43,7 @@
                                 <div class="col-auto">
 
                                     <!-- Button -->
-                                    <a href="{{route('home.Article.create')}}" class="btn btn-sm btn-primary">
+                                    <a href="{{route('home.article.create')}}" class="btn btn-sm btn-primary">
                                         发表文章
                                     </a>
 
@@ -53,33 +53,34 @@
                         <div class="card-body">
                             {{--<!-- List -->文章列表--}}
                             <ul class="list-group list-group-lg list-group-flush list my--4">
+                                @foreach($articles as $article)
                                  <li class="list-group-item px-0">
                                         <div class="row align-items-center">
+                                            {{--循环--}}
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <a href="">
-                                                    <img src="" alt="...">
+                                                <a href="project-overview.html" class="avatar avatar-4by2">
+                                                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
                                                 </a>
-
                                             </div>
                                             <div class="col ml--2">
 
                                                 <!-- Title -->
                                                 <h4 class="card-title mb-1 name">
-                                                    <a href="">dddd</a>
+                                                    <a href="{{route('home.article.show',$article)}}">{{$article->title}}</a>
                                                 </h4>
 
                                                 <p class="card-text small mb-1">
                                                     <a href="" class="text-secondary mr-2">
-                                                        <i class="fa fa-user-circle" aria-hidden="true"></i> qqq
+                                                        <i class="fa fa-user-circle" aria-hidden="true"></i>{{$article->user->name}}
                                                     </a>
                                                     {{--Carbon 处理时间库--}}
-                                                    <i class="fa fa-clock-o" aria-hidden="true"></i>rrrr
+                                                    <i class="fa fa-clock-o" aria-hidden="true">{{$article->created_at->diffForHumans()}}</i>
 
                                                     <a href="http://www.houdunren.com/edu/topics_1.html" class="text-secondary ml-2">
-                                                        <i class="fa fa-folder-o" aria-hidden="true"></i> gggg</a>
+                                                        <i class="fa fa-folder-o" aria-hidden="true"></i>{{$article->category->title}}</a>
                                                 </p>
-
+                                                {{--循环--}}
                                             </div>
                                             <div class="col-auto">
 
@@ -89,33 +90,59 @@
                                                         <i class="fe fe-more-vertical"></i>
                                                     </a>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="" class="dropdown-item">
+                                                        <a href="{{route('home.article.show',$article)}}" class="dropdown-item">
                                                             查看详情
                                                         </a>
-                                                            <a href="" class="dropdown-item">
+                                                        @can('update',$article)
+                                                        <a href="{{route('home.article.edit',$article)}}" class="dropdown-item">
                                                                 编辑
                                                             </a>
-                                                            <a href="javascript:;"class="dropdown-item">
+                                                        @endcan
+                                                        @can('update',$article)
+                                                        <a href="javascript:;"class="dropdown-item" onclick="del(this)">
                                                                 删除
                                                             </a>
-                                                            <form action="" method="">
+                                                        @endcan
+                                                        <form action="{{route('home.article.destroy',$article)}}" method="post">
+                                                            @csrf @method('DELETE')
                                                             </form>
                                                     </div>
                                                 </div>
 
                                             </div>
                                         </div> <!-- / .row -->
-
                                     </li>
+                                    @endforeach
                             </ul>
                         </div>
                     </div>
+                    {{$articles->links()}}
                 </div>
             </div>
         </div>
     </div>
 @endsection
 @push('js')
+    <script>
+        function del(obj) {
+            require(['https://cdn.bootcss.com/sweetalert/2.1.2/sweetalert.min.js'], function (swal) {
+                swal("确定删除?", {
+                    icon: 'warning',
+                    buttons: {
+                        cancel: "取消",
+                        defeat: '确定',
+                    },
+                }).then((value) => {
+                    switch (value) {
+                        case "defeat":
+                            $(obj).next('form').submit();
+                            break;
+                        default:
 
+                    }
+                });
+            })
+        }
+    </script>
 
 @endpush

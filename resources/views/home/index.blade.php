@@ -77,10 +77,9 @@
                             <div class="col-auto">
 
                                 <!-- Avatar -->
-                                <a href="project-overview.html" class="avatar avatar-4by3">
+                                <a href="#" class="avatar avatar-4by3">
                                     <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
                                 </a>
-
                             </div>
                             <div class="col ml--2">
 
