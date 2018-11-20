@@ -58,8 +58,8 @@
                                             {{--循环--}}
                                             <div class="col-auto">
                                                 <!-- Avatar -->
-                                                <a href="{{route('home.article.show',$article)}}" class="avatar avatar-4by2">
-                                                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded">
+                                                <a href="{{route('member.user.show',$article->user)}}" class="avatar avatar-sm">
+                                                    <img src="{{$article->user->icon}}" alt="..." class="avatar-img rounded">
                                                 </a>
                                             </div>
                                             <div class="col ml--2">

@@ -47,7 +47,12 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+
+        //$user指的是文章作者
+        //dd($user->toArray());
+
+
+        return view('member.user.show');
     }
 
     /**

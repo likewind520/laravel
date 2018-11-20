@@ -3,7 +3,7 @@
         <div class="card-block text-center pt-5">
             <div class="avatar avatar-xxl">
                 <a href="">
-                    <img src="" class="avatar-img rounded-circle">
+                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" class="avatar-img rounded-circle">
                 </a>
             </div>
             <div class="text-center mt-4">
