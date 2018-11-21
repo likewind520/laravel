@@ -52,7 +52,7 @@
                     <div class="card-block text-center p-5">
                         <div class="avatar avatar-4by2">
                             <a href="">
-                                <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" alt="..." class="avatar-img rounded-circle">
+                                <img src="{{$article->user->icon}}" alt="..." class="avatar-img rounded-circle">
                             </a>
                         </div>
                     </div>

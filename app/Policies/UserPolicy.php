@@ -83,4 +83,10 @@ class UserPolicy
     {
         //
     }
+        //注册策略方法
+    public function isMine(User $user, User $model)
+    {
+        //如果当前登录用户是文章作者，那就能看到修改项
+        return $user->id == $model->id;
+    }
 }

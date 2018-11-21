@@ -47,6 +47,9 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
 Route::group(['prefix'=>'util','namespace'=>'Util','as'=>'util.'],function(){
     //发送验证码
     Route::any('/code/send','CodeController@send')->name('code.send');
+    //头像上传
+    Route::any('/upload','UploadController@upload')->name('upload');
+    Route::any('/filesLists','UploadController@filesLists')->name('filesLists');
 
 });
 

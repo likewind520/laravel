@@ -2,35 +2,35 @@
     <div class="card">
         <div class="card-block text-center pt-5">
             <div class="avatar avatar-xxl">
-                <a href="">
-                    <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/avatars/projects/project-2.jpg" class="avatar-img rounded-circle">
+                <a href="{{route('member.user.show',$user)}}">
+                    <img src="{{$user->icon}}" class="avatar-img rounded-circle">
                 </a>
             </div>
             <div class="text-center mt-4">
                 <a href="">
-                    <h3 class="text-secondary">ss</h3>
+                    <h3 class="text-secondary">{{$user->name}}</h3>
                 </a>
             </div>
         </div>
         <div class="card-body text-center pt-1 pb-2">
-
+            @can('isMine',$user)
             <div class="nav flex-column nav-pills ">
-                <a href="" class="nav-link text-muted">
+                <a href="{{route('member.user.edit',[$user,'type'=>'icon'])}}" class="nav-link text-muted">
                     修改头像
                 </a>
             </div>
 
             <div class="nav flex-column nav-pills ">
-                <a href="" class="nav-link text-muted">
+                <a href="{{route('member.user.edit',[$user,'type'=>'password'])}}" class="nav-link text-muted">
                     修改密码
                 </a>
             </div>
             <div class="nav flex-column nav-pills ">
-                <a href="" class="nav-link text-muted">
+                <a href="{{route('member.user.edit',[$user,'type'=>'name'])}}" class="nav-link text-muted">
                     修改昵称
                 </a>
             </div>
-
+            @endcan()
             <div class="nav flex-column nav-pills ">
                 <a href="" class="nav-link text-muted">
                     粉丝列表
