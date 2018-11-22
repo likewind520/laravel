@@ -89,4 +89,9 @@ class UserPolicy
         //如果当前登录用户是文章作者，那就能看到修改项
         return $user->id == $model->id;
     }
+    public function isNotMine(User $user, User $model)
+    {
+        //如果自己查看自己就不需要显示关注按钮
+        return $user->id != $model->id;
+    }
 }

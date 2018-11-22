@@ -31,33 +31,25 @@
                 </a>
             </div>
             @endcan()
-            <div class="nav flex-column nav-pills ">
-                <a href="" class="nav-link text-muted">
-                    粉丝列表
-                </a>
-                <a href="" class="nav-link text-muted">
-                    关注列表
-                </a>
-                <a href="" class="nav-link text-muted">
-                    消息中心
-                </a>
-            </div>
+
         </div>
     </div>
     <div class="card">
         <div class="card-body text-center">
-            <div class="nav flex-column nav-pills">
-                <a href="" class="nav-link
-                                    text-muted">
-                    帖子管理
+            <div class="nav flex-column nav-pills ">
+                <a href="{{route('member.my_fans',$user)}}" class="nav-link text-muted">
+                    @can('isMine',$user)
+                    我的粉丝
+                    @else
+                    他的粉丝
+                    @endcan
                 </a>
-                <a href="" class="nav-link
-                                    text-muted">
-                    文档管理
-                </a>
-                <a href="" class="nav-link
-                                    text-muted">
-                    会员时长
+                <a href="{{route('member.my_following',$user)}}" class="nav-link text-muted">
+                    @can('isMine',$user)
+                    我的关注
+                    @else
+                    他的关注
+                    @endcan
                 </a>
             </div>
         </div>

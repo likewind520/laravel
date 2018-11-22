@@ -111,4 +111,19 @@ class UserController extends Controller
         $user->fans()->toggle(auth()->user());
         return back();
     }
+    //我的粉丝 这里的我指的是文章作者，即$user
+    public function myFans(User $user){
+        //查询我的粉丝
+        $fans=$user->fans()->paginate(10);
+        //dd($fans->get()->toArray());
+        return view('member.user.my_fans',compact('user','fans'));
+    }
+    //我的关注 这里的我指的是文章作者，即$user
+    public function myFollowing(User $user){
+        //查询我的关注
+        $followings=$user->following()->paginate(10);
+
+        return view('member.user.my_following',compact('user','followings'));
+
+    }
 }

@@ -16,14 +16,14 @@
                                 {{$article['title']}}
                             </h2>
                             <p class="text-muted mb-1 text-muted small">
-                                <a href="" class="text-secondary">
+                                <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">
                                     <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                                </a><a href="" class="text-secondary">{{$article->user->name}}</a>
+                                </a><a href="{{route('member.user.show',$article->user)}}" class="text-secondary">{{$article->user->name}}</a>
 
                                 <i class="fa fa-clock-o ml-2" aria-hidden="true"></i>
                                 {{$article->created_at->diffForHumans()}}
 
-                                <a href="" class="text-secondary">
+                                <a href="{{route('home.article.index',['category'=>$article->category->id])}}" class="text-secondary">
                                     <i class="fa fa-folder-o ml-2" aria-hidden="true"></i>
                                     {{$article->category->title}}
                                 </a>
@@ -56,17 +56,21 @@
                             </a>
                         </div>
                     </div>
-
-                    <div class="card-footer text-muted">
-                        {{--$article->user 被关注者--}}
-                        <a class="btn btn-white btn-block btn-xs" href="{{route('member.attention',$article->user)}}">
-                            @if($article->user->fans->contains(auth()->user()))
-                                取消关注
-                            @else
-                                <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
-                            @endif
-                        </a>
-                    </div>
+                    @auth()
+                        {{--如果查看的文章作者不是登录用户就显示关注，如果是登录用户自己查看自己就不显示关注--}}
+                        @can('isNotMine',$article->user)
+                            <div class="card-footer text-muted">
+                                {{--$article->user 被关注者--}}
+                                <a class="btn btn-white btn-block btn-xs" href="{{route('member.attention',$article->user)}}">
+                                    @if($article->user->fans->contains(auth()->user()))
+                                        取消关注
+                                    @else
+                                        <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
+                                    @endif
+                                </a>
+                            </div>
+                            @endcan
+                    @endauth
                 </div>
             </div>
         </div>
