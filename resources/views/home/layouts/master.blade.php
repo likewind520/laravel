@@ -30,7 +30,7 @@
         </button>
 
         <!-- Brand -->
-        <a class="navbar-brand mr-auto" href="index.html">
+        <a class="navbar-brand mr-auto" href="/">
             <img src="{{asset('org/Dashkit-1.1.2/assets')}}/img/logo.svg" alt="..." class="navbar-brand-img">
         </a>
 

@@ -56,9 +56,15 @@
                             </a>
                         </div>
                     </div>
+
                     <div class="card-footer text-muted">
-                        <a class="btn btn-white btn-block btn-xs" href="http://www.houdunren.com/member/follow/1">
-                            <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
+                        {{--$article->user 被关注者--}}
+                        <a class="btn btn-white btn-block btn-xs" href="{{route('member.attention',$article->user)}}">
+                            @if($article->user->fans->contains(auth()->user()))
+                                取消关注
+                            @else
+                                <i class="fa fa-plus" aria-hidden="true"></i> 关注 TA
+                            @endif
                         </a>
                     </div>
                 </div>

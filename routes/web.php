@@ -40,6 +40,8 @@ Route::get('/logout','UserController@logout')->name('logout');
 Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function(){
     //用户管理
     Route::resource('user','UserController');
+    //关注呗关注
+    Route::get('attention/{user}','UserController@attention')->name('attention');
 });
 
 

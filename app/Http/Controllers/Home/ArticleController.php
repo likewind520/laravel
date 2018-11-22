@@ -64,6 +64,7 @@ class ArticleController extends Controller
 
     public function show(Article $article)
     {
+
         return view('home.article.show',compact('article'));
     }
 

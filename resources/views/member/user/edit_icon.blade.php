@@ -20,7 +20,7 @@
                             <span class="help-block text-muted small">请上传 200X200 像素并小于200KB的JPG图片</span>
                         </div>
                     </div>
-                    <form action="{{route('member.user.update',auth()->user())}}" method="post" class="col-sm-8" id="form-icon">
+                    <form id="editIocn" action="{{route('member.user.update',auth()->user())}}" method="post" class="col-sm-8" id="form-icon">
                         @csrf @method('PUT')
                         <input type="hidden" name="icon" value="{{$user->icon}}">
 
@@ -48,9 +48,13 @@
                 };
                 hdjs.image(function (images) {
 
-                    //上传成功的图片，数组类型
-                    // $("[name='thumb']").val(images[0]);
-                    // $(".img-thumbnail").attr('src', images[0]);
+                    //将返回的图片路径写入到input表单的val值
+                    //提交表单做头像修改
+                    $("[name='icon']").val(images[0]);
+                    //将上传返回的图片写入avatar-img元素的src
+                    $(".avatar-img").attr('src', images[0]);
+                    //触发表单提交
+                    $('#editIocn').submit();
                 }, options)
             });
         }
