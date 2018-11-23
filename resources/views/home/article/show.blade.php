@@ -39,6 +39,8 @@
                         </div>
                     </div>
                 </div>
+                {{--评论区--}}
+                @include('home.layouts.comment')
             </div>
             <div class="col-12 col-xl-3">
                 <div class="card">
@@ -56,6 +58,7 @@
                             </a>
                         </div>
                     </div>
+
                     @auth()
                         {{--如果查看的文章作者不是登录用户就显示关注，如果是登录用户自己查看自己就不显示关注--}}
                         @can('isNotMine',$article->user)

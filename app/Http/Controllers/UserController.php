@@ -18,7 +18,7 @@ class UserController extends Controller
     }
 
     //登录页面
-    public function login()
+    public function login(Request $request)
     {
         return view('user.login');
     }
@@ -50,7 +50,13 @@ class UserController extends Controller
         //dd($validate);
         //\Auth::attempt()框架中自带的自动验证系统
         if (\Auth::attempt($validate,$remember)) {
-            return redirect()->route('home')->with('success', '登录成功');
+            //如果登录页面地址栏接收到from参数，成功后跳回评论区
+            if ($request->from){
+                return redirect($request->from)->with('success', '登录成功');
+            }else{
+                //如果没有就跳到首页
+                return redirect()->route('home')->with('success', '登录成功');
+            }
         }
 
         //登录失败返回

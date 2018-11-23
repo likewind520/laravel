@@ -9,11 +9,14 @@ use App\Http\Controllers\Controller;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function __construct()
+    {
+        $this->middleware('auth',[
+            'only'=>['edit','update','attention']
+        ]);
+    }
+
     public function index()
     {
         //
@@ -108,6 +111,7 @@ class UserController extends Controller
         //dd($user->toArray());  //$user我们自己定义的必须跟路由参数一致。指的是被关注者
         //$aa= $user->fans();
         //dd($aa->toggle(auth()->user()));
+        $this->authorize('isNotMine',$user);
         $user->fans()->toggle(auth()->user());
         return back();
     }
