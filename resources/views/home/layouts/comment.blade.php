@@ -68,7 +68,8 @@
                     <div id="editormd">
                         <textarea style="display:none;"></textarea>
                     </div>
-                    <button class="btn btn-primary">发表评论</button>
+                    {{--.prevent 放在a标签阻止刷新页面并跳转，  放在按钮里面禁止发送请求--}}
+                    <button class="btn btn-primary" @click.prevent="send()">发表评论</button>
 
                 </div>
             </div> <!-- / .row -->

@@ -93,7 +93,7 @@
                                                             查看详情
                                                         </a>
                                                         @can('update',$article)
-                                                        <a href="{{route('home.article.edit',$article)}}" class="dropdown-item">
+                                                        <a href="{{route('home.article.edit',[$article,'from'=>url()->full()])}}" class="dropdown-item">
                                                                 编辑
                                                             </a>
                                                         @endcan

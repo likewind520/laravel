@@ -13,6 +13,14 @@
             </div>
         </div>
         <div class="card-body text-center pt-1 pb-2">
+            <p class="card-text">
+              <span class="badge badge-soft-secondary">
+                粉丝:{{$user->fans->count()}}
+              </span>
+              <span class="badge badge-soft-secondary">
+                关注:{{$user->following->count()}}
+              </span>
+            </p>
             @can('isMine',$user)
             <div class="nav flex-column nav-pills ">
                 <a href="{{route('member.user.edit',[$user,'type'=>'icon'])}}" class="nav-link text-muted {{active_class(if_route(['member.user.edit']) && if_query('type', 'icon'), 'active', '')}}">

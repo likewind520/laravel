@@ -71,6 +71,7 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
+        //dd($article);
         $this->authorize('update',$article);
         $categories = Category::all();
         //dd($article->toArray());
@@ -88,7 +89,7 @@ class ArticleController extends Controller
         //$article->user_id = auth()->id();
         //dd($article);
         $article->save();
-        return redirect()->route('home.article.index')->with('success','文章编辑成功');
+        return redirect($request->from)->with('success','文章编辑成功');
     }
 
 

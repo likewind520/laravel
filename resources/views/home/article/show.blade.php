@@ -53,7 +53,7 @@
                     </div>
                     <div class="card-block text-center p-5">
                         <div class="avatar avatar-4by2">
-                            <a href="">
+                            <a href="{{route('member.user.show',$article->user)}}">
                                 <img src="{{$article->user->icon}}" alt="..." class="avatar-img rounded-circle">
                             </a>
                         </div>

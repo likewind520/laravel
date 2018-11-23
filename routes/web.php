@@ -17,7 +17,10 @@ Route::get('/','Home\HomeController@index')->name('home');
 //前台
 Route::group(['prefix'=>'home','namespace'=>'Home', 'as'=>'home.'],function(){
     Route::get('/','HomeController@index')->name('index');
+    //文章管理
     Route::resource('article','ArticleController');
+    //评论区
+    Route::resource('comment','CommentController');
 
 });
 //用户管理

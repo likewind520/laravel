@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <!-- Form -->
-                <form class="mb-4" method="post" action="{{route('home.article.update',$article)}}">
+                <form class="mb-4" method="post" action="{{route('home.article.update',[$article,'from'=>Request::query('from')])}}">
                 @csrf @method('PUT')
                 <!-- Project name -->
                     <div class="form-group">
