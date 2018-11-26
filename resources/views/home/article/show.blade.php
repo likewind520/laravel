@@ -6,8 +6,16 @@
                 <div class="card card-body p-5">
                     <div class="row">
                         <div class="col text-right">
-                            <a href="http://www.houdunren.com/common/favorite?model=EduTopic&amp;id=60" class="btn btn-xs">
-                                <i class="fa fa-heart-o" aria-hidden="true"></i> 收藏</a>
+                            @auth
+                                {{--//路由参数:type 指的是点赞类型(article/comment)  id  点赞的文章/评论 id--}}
+                                @if($article->collect->where('user_id',auth()->id())->first())
+                                    <a class="btn btn-light" href="{{route('home.collect.make',['type'=>'article','id'=>$article['id']])}}">❤已收藏</a>
+                                @else
+                                    <a class="btn btn-white" href="{{route('home.collect.make',['type'=>'article','id'=>$article['id']])}}">❤ 收藏</a>
+                                @endif
+                            @else
+                                <a class="btn btn-white" href="{{route('login',['from'=>url()->full()])}}">收藏</a>
+                            @endauth
                         </div>
                     </div>
                     <div class="row">
@@ -31,6 +39,7 @@
                             </p>
                         </div>
                     </div>
+
                     <div class="row">
                         <div class="col-12 mt-5">
                             <div class="markdown editormd-html" id="content">
@@ -38,7 +47,37 @@
                             </div>
                         </div>
                     </div>
+                    {{--点赞--}}
+                    <hr>
+                    <div class="text-center">
+                        @auth
+                            {{--//路由参数:type 指的是点赞类型(article/comment)  id  点赞的文章/评论 id--}}
+                            @if($article->zan->where('user_id',auth()->id())->first())
+                                <a class="btn btn-danger" href="{{route('home.zan.make',['type'=>'article','id'=>$article['id']])}}">👍 取消赞</a>
+                            @else
+                                <a class="btn btn-white" href="{{route('home.zan.make',['type'=>'article','id'=>$article['id']])}}">👍 点赞</a>
+                            @endif
+                        @else
+                            <a class="btn btn-white" href="{{route('login',['from'=>url()->full()])}}">👍 点赞</a>
+                        @endauth
+                    </div>
+                    {{--点赞图片--}}
+                    <div class="row">
+
+                        <div class="col-12 mr--3">
+                            <div class="avatar-group d-none d-sm-flex">
+                                @foreach($article->zan as $zan)
+                                    <a href="{{route('member.user.show',$zan->user)}}" class="avatar avatar-xs" data-toggle="tooltip" title="" data-original-title="Ab Hadley">
+                                        <img src="{{$zan->user->icon}}" alt="..." class="avatar-img rounded-circle border border-white">
+                                    </a>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                    {{--点赞图片--}}
+
                 </div>
+
                 {{--评论区--}}
                 @include('home.layouts.comment')
             </div>

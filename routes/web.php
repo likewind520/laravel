@@ -21,6 +21,10 @@ Route::group(['prefix'=>'home','namespace'=>'Home', 'as'=>'home.'],function(){
     Route::resource('article','ArticleController');
     //评论区
     Route::resource('comment','CommentController');
+    //点赞 和取消点赞
+    Route::get('zan/make','ZanController@make')->name('zan.make');
+    //收藏 和取消收藏
+    Route::get('collect/make','CollectController@make')->name('collect.make');
 
 });
 //用户管理

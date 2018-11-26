@@ -13,6 +13,7 @@ class CommentController extends Controller
     {
         //dd($comment->get()->toArray());
         //dd($request->all());
+        //with()的作用就是把用户数据压制到$comments,最后得到的是所有的数据
         $comments=$comment->with('user')->where('article_id',$request->article_id)->get();
        //dd($comments->toArray());
         return ['code'=>1,'message'=>'','comments'=>$comments];
@@ -21,6 +22,7 @@ class CommentController extends Controller
 
     public function store(Request $request,Comment $comment)
     {
+        //打印数据需要在控制器中的network中
         //dd($request->all());
         //执行添加评论
         $comment->user_id= auth()->id();

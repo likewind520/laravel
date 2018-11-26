@@ -70,6 +70,13 @@
                         comment:{content:''},
                         comments:[], //所有评论
                 },
+               updated(){
+                   $(document).ready(function () {
+                       $('pre code').each(function (i, block) {
+                           hljs.highlightBlock(block);
+                       });
+                   });
+               },
                 methods: {
                     send(){
                         //评论不能为空
@@ -81,24 +88,22 @@
                             });
                             return false;
                         }
+                        //axios.post('数据传输地址',{评论内容,评论谁的文章}).then((response=>{}))
+                           //将数据传到PHP,.then成功后的回应
                         axios.post('{{route('home.comment.store')}}', {
-                            //内容
+                            //内容名:值
                              content:this.comment.content,
                             //该文章
                              article_id:'{{$article['id']}}'
                         })
                             .then((response)=> {
                                // console.log(response);
+                                //向所有评论数据数组里面追加新写入的内容
                                 this.comments.push(response.data.comment);
                                 //console.log(this.comments)
-                                //将 markdown 转为 html
+                                //将 markdown 转为 html,将标签解析在页面上
                                 let md = new MarkdownIt();
                                 response.data.comment.content = md.render(response.data.comment.content)
-                                $(document).ready(function () {
-                                    $('pre code').each(function (i, block) {
-                                        hljs.highlightBlock(block);
-                                    });
-                                });
                                 //清空 vue 数据
                                 this.comment.content = '';
                                 //清空编辑器内容
@@ -143,11 +148,6 @@
                             this.comments.forEach((v, k) => {
                                 v.content = md.render(v.content)
                             })
-                            $(document).ready(function () {
-                                $('pre code').each(function (i, block) {
-                                    hljs.highlightBlock(block);
-                                });
-                            });
                         })
                 }
             })
