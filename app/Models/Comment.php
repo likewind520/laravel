@@ -22,5 +22,8 @@ class Comment extends Model
         //第一个参数关联模型,第二个参数跟数据迁移  zan_id  zan_type
         return $this->morphMany(Zan::class,'zan');
     }
-
+    //评论关联通知
+    public function article(){
+        return $this->belongsTo(Article::class);
+    }
 }

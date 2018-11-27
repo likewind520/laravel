@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Member;
 
 use App\Models\Article;
+use App\Models\Zan;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use phpDocumentor\Reflection\DocBlock\Description;
 
 class UserController extends Controller
 {
@@ -129,6 +131,23 @@ class UserController extends Controller
 
         return view('member.user.my_following',compact('user','followings'));
     }
+
+    //我的点赞
+    public function myZan(User $user,Request $request,Zan $zan){
+
+        $type=$request->query('type');
+       //dd($type);
+        $zansData=$user->zan()->where( 'zan_type' , 'App\Models\\' . ucfirst( $type ) )->paginate( 1 );
+
+        //dd($zansData);
+
+        return view( 'member.user.my_zan_' . $type, compact( 'user','zan','zansData' ));
+    }
+
+
+
+
+    //我的收藏
      public function myCollect(User $user){
 
         //dd($user->toArray());

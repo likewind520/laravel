@@ -1,4 +1,4 @@
-<div class="col-sm-3">
+<div class="col-sm-3" id="left_menu">
     <div class="card">
         <div class="card-block text-center pt-5">
             <div class="avatar avatar-xxl">
@@ -38,6 +38,11 @@
                     修改昵称
                 </a>
             </div>
+            <div class="nav flex-column nav-pills ">
+                <a href="{{route('member.notify',$user)}}" class="nav-link text-muted {{active_class(if_route(['member.notify']) , 'active', '')}}">
+                    我的通知
+                </a>
+            </div>
             @endcan()
 
         </div>
@@ -59,20 +64,27 @@
                     他的关注
                     @endcan
                 </a>
-                <a href="{{route('member.my_collect',$user)}}" class="nav-link text-muted  {{active_class(if_route(['member.my_collect']), 'active', '')}}">
+                <a href="{{route('member.my_zan',[$user,'type'=>'article'])}}" class="nav-link text-muted {{active_class(if_route(['member.my_zan']), 'active', '')}}">
                     @can('isMine',$user)
-                        我的收藏
+                    我的点赞
                     @else
-                        他的收藏
+                    他的点赞
                     @endcan
                 </a>
+                {{--<a href="{{route('member.my_collect',$user)}}" class="nav-link text-muted  {{active_class(if_route(['member.my_collect']), 'active', '')}}">--}}
+                    {{--@can('isMine',$user)--}}
+                        {{--我的收藏--}}
+                    {{--@else--}}
+                        {{--他的收藏--}}
+                    {{--@endcan--}}
+                {{--</a>--}}
             </div>
         </div>
     </div>
 </div>
 @push('css')
     <style>
-        .active{
+        #left_menu .active{
             color:white!important;
         }
     </style>

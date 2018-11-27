@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
+use App\Observers\CommentObserver;
 use App\Observers\UserObserver;
 use App\User;
 use Carbon\Carbon;
@@ -16,10 +18,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        ///解决版本太低
         Schema::defaultStringLength(191);
+        //解决中文时间
         Carbon::setLocale('zh');
-        User::observe(UserObserver::class);
+        //注册观察者
+       User::observe(UserObserver::class);
+        Comment::observe(CommentObserver::class);
+
 
     }
 

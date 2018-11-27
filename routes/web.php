@@ -53,8 +53,15 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
     Route::get('get_fans/{user}','UserController@myFans')->name('my_fans');
     //我的关注
     Route::get('get_following/{user}','UserController@myFollowing')->name('my_following');
+    //我的点赞
+    Route::get('get_zan/{user}','UserController@myZan')->name('my_zan');
+    //我的所有通知
+    Route::get('notify/{user}','NotifyController@index')->name('notify');
+    //标记已读
+    Route::get('notify/show/{notify}','NotifyController@show')->name('notify.show');
     //我的收藏
     Route::get('get_collect/{user}','UserController@myCollect')->name('my_collect');
+
 });
 
 
