@@ -85,7 +85,7 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">
-                            <a href="" class="text-secondary">
+                            <a href="{{route('member.user.show',$article->user)}}" class="text-secondary">
                                 {{$article->user->name}}
                             </a>
                         </div>

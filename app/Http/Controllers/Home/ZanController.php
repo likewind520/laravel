@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 class ZanController extends Controller
 {
+
     //点赞 和取消点赞 和之前的toggle一样(库中没有就添加,有就删除),现在用另一种方式
     public function make(Request $request){
         $type=$request->query('type');
@@ -33,6 +34,13 @@ class ZanController extends Controller
             //dd($model->zan()->create());
             $model->zan()->create(['user_id'=>auth()->id()]);
         }
+        //判断是否为异步
+        if($request->ajax()){
+            //这个需要重新获取对应模型,这句话结合异步请求
+            $newModel = $class::find($id);
+            return ['code'=>1,'message'=>'','zan_num'=>$newModel->zan->count()];
+        }
+
         return back();
     }
 }

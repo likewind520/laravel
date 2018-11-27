@@ -1,63 +1,50 @@
 <div class="card" id="app">
     <div class="card-body">
-
         <!-- Comments -->
-
         <div class="comment mb-3" v-for="v in comments">
             <div class="row">
                 <div class="col-auto">
-
                     <!-- Avatar -->
-                    <a class="avatar" href="#">
+
+                    <a class="avatar" href="">
                         <img :src="v.user.icon" alt="..." class="avatar-img rounded-circle">
                     </a>
-
                 </div>
                 <div class="col ml--2">
-
                     <!-- Body -->
                     <div class="comment-body">
-
                         <div class="row">
                             <div class="col">
-
                                 <!-- Title -->
                                 <h5 class="comment-title">
                                     @{{v.user.name}}
                                 </h5>
-
                             </div>
                             <div class="col-auto">
-
                                 <!-- Time -->
                                 <time class="comment-time">
-                                    👍 2 | @{{v.created_at}}
+                                    <a href="" @click.prevent="zan(v)" class="text-muted">👍 @{{v.zan_num}} </a>
+                                    | @{{v.created_at}}
                                 </time>
-
                             </div>
                         </div> <!-- / .row -->
-
                         <!-- Text -->
-                        <p class="comment-text" v-html="v.content">
-                        </p>
-
+                        <p class="comment-text" v-html="v.content"></p>
                     </div>
-
                 </div>
             </div> <!-- / .row -->
         </div>
         <!-- Divider -->
         <hr>
         <!-- Form -->
-                    <div id="editormd">
-                        <textarea style="display:none;"></textarea>
-                    </div>
-                    {{--.prevent 放在a标签阻止刷新页面并跳转，  放在按钮里面禁止发送请求--}}
-                    @auth()
-                    <button class="btn btn-primary" @click.prevent="send()">发表评论</button>
-                {{--</div>--}}
+        <div id="editormd">
+            <textarea style="display:none;"></textarea>
+        </div>
+        {{--.prevent 放在a标签阻止刷新页面并跳转，  放在按钮里面禁止发送请求--}}
+        @auth()
+        <button class="btn btn-primary" @click.prevent="send()">发表评论</button>
         @else
-            <p class="text-muted text-center">请 <a href="{{route('login',['from'=>url()->full()])}}">登录</a> 后评论</p>
+        <p class="text-muted text-center">请 <a href="{{route('login',['from'=>url()->full()])}}">登录</a> 后评论</p>
         @endauth
     </div>
 </div>
@@ -90,12 +77,13 @@
                         }
                         //axios.post('数据传输地址',{评论内容,评论谁的文章}).then((response=>{}))
                            //将数据传到PHP,.then成功后的回应
-                        axios.post('{{route('home.comment.store')}}', {
+                        axios.post('{{route('home.comment.store')}}',
+                            {
                             //内容名:值
                              content:this.comment.content,
                             //该文章
                              article_id:'{{$article['id']}}'
-                        })
+                            })
                             .then((response)=> {
                                // console.log(response);
                                 //向所有评论数据数组里面追加新写入的内容
@@ -113,6 +101,15 @@
                                 editormd.replaceSelection("");
 
                             })
+                    },
+                    //点赞
+                    zan(v){
+                        let url = '/home/zan/make?type=comment&id='+v.id;
+                        axios.get(url).then((response)=>{
+                            //console.log(response.data.num);
+                            v.zan_num = response.data.zan_num;
+                            //console.log(v);
+                        })
                     }
                 },
                 mounted () {

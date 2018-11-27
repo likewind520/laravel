@@ -128,6 +128,12 @@ class UserController extends Controller
         $followings=$user->following()->paginate(10);
 
         return view('member.user.my_following',compact('user','followings'));
-
     }
+     public function myCollect(User $user){
+
+        //dd($user->toArray());
+
+
+        return view('member.user.my_collect',compact('user'));
+     }
 }

@@ -17,5 +17,10 @@ class Comment extends Model
         return $this->belongsTo(User::class);
 
     }
+    //定义 zan 多态关联
+    public function zan(){
+        //第一个参数关联模型,第二个参数跟数据迁移  zan_id  zan_type
+        return $this->morphMany(Zan::class,'zan');
+    }
 
 }

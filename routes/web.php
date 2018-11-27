@@ -53,6 +53,8 @@ Route::group(['prefix'=>'member','namespace'=>'Member','as'=>'member.'],function
     Route::get('get_fans/{user}','UserController@myFans')->name('my_fans');
     //我的关注
     Route::get('get_following/{user}','UserController@myFollowing')->name('my_following');
+    //我的收藏
+    Route::get('get_collect/{user}','UserController@myCollect')->name('my_collect');
 });
 
 

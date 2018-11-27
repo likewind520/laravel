@@ -16,6 +16,9 @@ class CommentController extends Controller
         //with()的作用就是把用户数据压制到$comments,最后得到的是所有的数据
         $comments=$comment->with('user')->where('article_id',$request->article_id)->get();
        //dd($comments->toArray());
+        foreach($comments as $comment){
+            $comment->zan_num = $comment->zan->count();
+        }
         return ['code'=>1,'message'=>'','comments'=>$comments];
 
     }
@@ -32,6 +35,7 @@ class CommentController extends Controller
         //dd($comment);
         //当前发的这条数据
         $comment = $comment->with('user')->find($comment->id);
+        $comment->zan_num = $comment->zan->count();
         //dd($comment->toArray());
         return ['code'=>1,'message'=>'','comment'=>$comment];
 
