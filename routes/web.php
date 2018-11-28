@@ -25,6 +25,8 @@ Route::group(['prefix'=>'home','namespace'=>'Home', 'as'=>'home.'],function(){
     Route::get('zan/make','ZanController@make')->name('zan.make');
     //收藏 和取消收藏
     Route::get('collect/make','CollectController@make')->name('collect.make');
+    //搜素
+    Route::get('search','HomeController@search')->name('search');
 
 });
 //用户管理
