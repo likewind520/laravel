@@ -261,7 +261,7 @@
 
                                     <!-- Title -->
                                     <h5 class="card-header-title">
-                                        通知
+                                        通知({{auth()->user()->unreadNotifications()->count()}})
                                     </h5>
 
                                 </div>
@@ -276,9 +276,9 @@
                             </div> <!-- / .row -->
                         </div> <!-- / .card-header -->
                         <div class="card-body">
-
                             <!-- List group -->
                             <div class="list-group list-group-flush my--3">
+                                @if(auth()->user()->unreadNotifications()->count()!=0)
                                 @foreach(auth()->user()->unreadNotifications()->limit(3)->get() as $notification)
                                     <a class="list-group-item px-0" href="{{route('member.notify.show',$notification)}}">
 
@@ -311,6 +311,9 @@
 
                                     </a>
                                 @endforeach
+                                @else
+                                    <p class="text-muted text-center">暂无通知</p>
+                                @endif
                             </div>
 
                         </div>

@@ -42,6 +42,11 @@
 
                                           <!-- Content -->
                                           <div class="small text-muted">
+                                             @if($notification->read_at)
+                                                <span class="badge badge-soft-primary">已读</span>
+                                                @else
+                                                <span class="badge badge-soft-danger">未读</span>
+                                             @endif
                                              <strong class="text-body">{{$notification['data']['user_name']}}</strong> 评论了
                                              <strong class="text-body">{{$notification['data']['article_title']}}</strong>
                                           </div>
@@ -59,10 +64,8 @@
                                  </a>
                               @endforeach
                            </div>
-
                         </div>
                         <!-- List -->
-
                      </div>
                      {{$notifications->links()}}
                   </div>

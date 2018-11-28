@@ -148,11 +148,12 @@ class UserController extends Controller
 
 
     //我的收藏
-     public function myCollect(User $user){
+     public function myCollect(User $user,Request $request){
 
-        //dd($user->toArray());
-
-
-        return view('member.user.my_collect',compact('user'));
+         $type=$request->query('type');
+        //dd($type);
+         $collectsData=$user->collect()->where( 'collect_type' , 'App\Models\\' . ucfirst( $type ) )->paginate( 1 );
+        //dd($collectsData);
+         return view('member.user.my_collect',compact('user','collectsData'));
      }
 }

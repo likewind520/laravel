@@ -26,10 +26,13 @@ class Article extends Model
         return $this->morphMany(Zan::class,'zan');
 
     }
-    //定义 collect 多态关联
+    //定义 collect收藏 多态关联
     public function collect(){
         //第一个参数关联模型,第二个参数跟数据迁移  collect_id  collect_type
         return $this->morphMany(Collect::class,'collect');
-
+    }
+    //评论通知  通知 已读之后跳转链接
+    public function getLink($param){
+        return route('home.article.show',$this) . $param;
     }
 }

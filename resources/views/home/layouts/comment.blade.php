@@ -1,7 +1,7 @@
 <div class="card" id="app">
     <div class="card-body">
         <!-- Comments -->
-        <div class="comment mb-3" v-for="v in comments">
+        <div class="comment mb-3" v-for="v in comments" :id="'comment'+v.id">
             <div class="row">
                 <div class="col-auto">
                     <!-- Avatar -->
@@ -37,11 +37,11 @@
         <!-- Divider -->
         <hr>
         <!-- Form -->
+        @auth()
         <div id="editormd">
             <textarea style="display:none;"></textarea>
         </div>
         {{--.prevent 放在a标签阻止刷新页面并跳转，  放在按钮里面禁止发送请求--}}
-        @auth()
         <button class="btn btn-primary" @click.prevent="send()">发表评论</button>
         @else
         <p class="text-muted text-center">请 <a href="{{route('login',['from'=>url()->full()])}}">登录</a> 后评论</p>
@@ -63,6 +63,10 @@
                            hljs.highlightBlock(block);
                        });
                    });
+                   //滚动页面
+                    //alert(location.hash);//#comment19
+                   //http://demos.flesler.com/jquery/scrollTo/
+                   hdjs.scrollTo('body',location.hash,1000, {queue:true});
                },
                 methods: {
                     send(){

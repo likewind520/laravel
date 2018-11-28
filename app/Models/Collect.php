@@ -12,4 +12,9 @@ class Collect extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    //获取多态关联模型 Article  video
+    public function belongsModel(){
+        return $this->morphTo('collect');
+    }
 }
