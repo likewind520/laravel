@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
     @stack('css')
     <meta name="csrf-token" content="{{csrf_token()}}">
-    <title>黎明之光</title>
+    {{--<title>黎明之光</title>--}}
+    <title>{{hd_config('base.title')}}</title>
 </head>
 <body>
 
@@ -484,7 +485,7 @@
             <p class="small text-secondary">
                 <i class="fa fa-phone-square" aria-hidden="true"></i> : 010-86467608
                 <i class="fa fa-telegram ml-2" aria-hidden="true"></i> :
-                <a href="mailto:23000711698@qq.com" class="text-secondary">
+                <a href="942167232@qq.com" class="text-secondary">
                     942167232@qq.com
                 </a>
                 <br>

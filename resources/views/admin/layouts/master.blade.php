@@ -79,6 +79,8 @@
                         <i class="fe fe-home"></i> 黎明之光
                     </a>
                 </li>
+
+                {{--文章系统--}}
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
                         <i class="fe fe-file"></i> 文章系统
@@ -93,6 +95,40 @@
                         </ul>
                     </div>
                 </li>
+                {{--文章系统--}}
+
+                {{--后台配置项--}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
+                        <i class="fe fe-layout"></i> 网站配置
+                    </a>
+                    <div class="collapse show" id="sidebarLayouts">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route('admin.config.edit',['name'=>'base'])}}" class="nav-link">
+                                    基本配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'upload'])}}" class="nav-link">
+                                    上传配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'mail'])}}" class="nav-link">
+                                    邮件配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'code'])}}" class="nav-link">
+                                    验证码配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'search'])}}" class="nav-link">
+                                    搜索配置
+                                </a>
+                                <a href="{{route('admin.config.edit',['name'=>'wechat'])}}" class="nav-link">
+                                    微信配置
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                {{--后台配置项--}}
+
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fe fe-user"></i> Authentication
@@ -104,20 +140,6 @@
                                     Sign in
                                 </a>
 
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
-                        <i class="fe fe-layout"></i> Layouts
-                    </a>
-                    <div class="collapse show" id="sidebarLayouts">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="index.html" class="nav-link">
-                                    Sidenav
-                                </a>
                             </li>
                         </ul>
                     </div>

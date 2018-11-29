@@ -85,6 +85,9 @@ Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin
     Route::get('index','IndexController@index')->name('index');
     //文章的增删改查
     Route::resource('category','CategoryController');
+    //配置项管理
+    Route::get('config/edit/{name}','ConfigController@edit')->name('config.edit');
+    Route::post('config/update/{name}','ConfigController@update')->name('config.update');
 });
 
 
