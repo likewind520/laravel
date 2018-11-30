@@ -14,7 +14,7 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
-
+        @stack('css')
     <title>后台管理</title>
 </head>
 <body>
@@ -128,7 +128,21 @@
                     </div>
                 </li>
                 {{--后台配置项--}}
+                <li class="nav-item">
+                    <a class="nav-link" href="#sidebarWechat" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
+                        <i class="fe fe-message-square"></i> 微信管理
+                    </a>
+                    <div class="collapse show" id="sidebarWechat">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="{{route('wechat.button.index')}}" class="nav-link" >
+                                    微信菜单
+                                </a>
 
+                            </li>
+                        </ul>
+                    </div>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fe fe-user"></i> Authentication
