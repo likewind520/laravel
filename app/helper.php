@@ -5,6 +5,7 @@ if (!function_exists('hd_config')){
     function hd_config($var){
         //dd($var);
         static $cache=[];
+        //以点分割成数组,再在调用的地方以|做成字符串
         $info = explode('.',$var);
         //dd($info);
         if(!$cache){
