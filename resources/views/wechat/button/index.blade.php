@@ -66,13 +66,13 @@
                                     @if($button['status'])
                                         <a href="javascript:;" class="btn btn-info">已推送</a>
                                     @else
-                                        <a href="" class="btn btn-white">推送到微信</a>
+                                        <a href="{{route('wechat.button.push',$button)}}" class="btn btn-white">推送到微信</a>
                                     @endif
 
                                     <a href="{{route('wechat.button.edit',$button)}}" class="btn btn-white">编辑</a>
 
                                     <button onclick="del(this)" type="button" class="btn btn-white">删除</button>
-                                    <form action="" method="post">
+                                    <form action="{{route('wechat.button.update',$button)}}" method="post">
                                         @csrf  @method('DELETE')
                                     </form>
                                 </div>

@@ -101,7 +101,10 @@ Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin
 Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function (){
     //菜单管理
     Route::resource('button','ButtonController');
+    //推送
+    Route::get('button/push/{button}','ButtonController@push')->name('button.push');
     Route::get('api/handler','ApiController@handler')->name('api.handler');
+
 });
 
 
