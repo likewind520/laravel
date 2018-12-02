@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/quill/dist/quill.core.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/libs/flatpickr/dist/flatpickr.min.css">
-
+    {{--轮播图--}}
+    <link href="{{asset('org/css/lunbotu.css')}}" rel="stylesheet" type="text/css">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
+
     @stack('css')
     <meta name="csrf-token" content="{{csrf_token()}}">
+
     {{--<title>黎明之光</title>--}}
     <title>{{hd_config('base.title')}}</title>
 </head>
@@ -500,5 +503,6 @@
     require(['bootstrap'])
 </script>
 @stack('js')
+@stack('lbt')
 </body>
 </html>

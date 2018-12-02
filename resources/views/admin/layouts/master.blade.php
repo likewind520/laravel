@@ -14,6 +14,7 @@
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link rel="stylesheet" href="{{asset('org/Dashkit-1.1.2/assets')}}/css/theme.min.css">
+    <meta name="csrf-token" content="{{csrf_token()}}">
         @stack('css')
     <title>后台管理</title>
 </head>
@@ -122,6 +123,9 @@
                                 </a>
                                 <a href="{{route('admin.config.edit',['name'=>'wechat'])}}" class="nav-link">
                                     微信配置
+                                </a>
+                                <a href="{{route('admin.carousels.index')}}" class="nav-link">
+                                    轮播配置
                                 </a>
                             </li>
                         </ul>

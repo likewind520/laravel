@@ -88,16 +88,11 @@ Route::group(['middleware'=>['admin.auth'],'prefix'=>'admin','namespace'=>'Admin
     //配置项管理
     Route::get('config/edit/{name}','ConfigController@edit')->name('config.edit');
     Route::post('config/update/{name}','ConfigController@update')->name('config.update');
+    //轮播图管理
+    Route::resource('carousels','CarouselController');
 });
 
 //微信管理
-//Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function(){
-//    //菜单管理
-//    Route::resource('button','ButtonController');
-//    Route::get('button/push/{button}','ButtonController@push')->name('button.push');
-//    //微信通信地址
-//    Route::get('api/handler','ApiController@handler')->name('api.handler');
-//});
 Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function (){
     //菜单管理
     Route::resource('button','ButtonController');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Home;
 
 use App\Models\Article;
+use App\Models\Carousel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Activitylog\Models\Activity;
@@ -14,7 +15,9 @@ class HomeController extends Controller
 
         //获取所有动态
         $actives=Activity::latest()->paginate(5);
-        return view('home.index',compact('actives'));
+        //获得所有轮播图数据
+        $carousels=Carousel::latest()->paginate(5);
+        return view('home.index',compact('actives','carousels'));
     }
     public function search(Request $request){
         //接受搜索的关键词
