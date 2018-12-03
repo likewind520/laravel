@@ -145,7 +145,11 @@
                                 <a href="{{route('wechat.button.index')}}" class="nav-link" >
                                     微信菜单
                                 </a>
-
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('wechat.response_text.index')}}" class="nav-link" >
+                                    文本回复
+                                </a>
                             </li>
                         </ul>
                     </div>

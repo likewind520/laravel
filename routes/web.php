@@ -99,6 +99,8 @@ Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function
     //推送
     Route::get('button/push/{button}','ButtonController@push')->name('button.push');
     Route::get('api/handler','ApiController@handler')->name('api.handler');
+    //文本回复
+    Route::resource('response_text','ResponseTextController');
 
 });
 
