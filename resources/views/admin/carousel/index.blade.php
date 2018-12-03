@@ -56,9 +56,9 @@
                     <thead>
                     <tr>
                         <th>编号</th>
-                        <th>轮播图名字</th>
-                        <th>样式</th>
-                        <th>图片</th>
+                        <th>图片名</th>
+                        {{--<th>样式</th>--}}
+                        <th>图片路径</th>
                         <th>#</th>
                     </tr>
                     </thead>
@@ -67,7 +67,8 @@
                         <tr>
                             <td>{{$carousel['id']}}</td>
                             <td>{{$carousel['name']}}</td>
-                            <td>{{$carousel['style']}}</td>
+                            {{--<td>{{$carousel['style']}}</td>--}}
+                            {{--<td><img src="{{$carousel->icon}}"></td>--}}
                             <td>{{$carousel['icon']}}</td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="First group">

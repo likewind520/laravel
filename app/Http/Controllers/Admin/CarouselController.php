@@ -8,16 +8,7 @@ use App\Http\Controllers\Controller;
 
 class CarouselController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth',[
-            'only'=>['create','store','edit','destroy'],
-        ]);
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index(Request $request)
     {
             $carousels=Carousel::all();
@@ -25,72 +16,33 @@ class CarouselController extends Controller
         return view('admin.carousel.index',compact('carousels'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //加载添加轮播图模板
     public function create()
     {
         return view('admin.carousel.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request,Carousel $carousel)
     {
+        //添加到数据库保存
         //dd($request->all());
         $carousel->name = $request->name;
-        $carousel->style = $request->style;
         $carousel->icon =$request->icon;
-        Carousel::create($request->all());
+//        Carousel::create($request->all());
         $carousel->save();
         return redirect()->route('admin.carousels.index')->with('success','添加成功');
 
     }
-
-
-    public function show(Carousel $carousel)
-    {
-
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Carousel  $carousel
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Carousel $carousel)
     {
+        //加载编辑模板
         //dd($carousel->toArray());
         return view('admin.carousel.edit',compact('carousel'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Carousel  $carousel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Carousel $carousel)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Carousel  $carousel
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Carousel $carousel)
     {
+        //删除图片
         $carousel->delete();
         return redirect()->route('admin.carousels.index')->with('success','删除成功');
     }

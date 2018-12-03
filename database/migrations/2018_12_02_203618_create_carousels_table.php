@@ -17,7 +17,6 @@ class CreateCarouselsTable extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id');
             $table->string('name')->default('')->comment('图片名字');
-            $table->text('style')->comment('图片样式');
             $table->string('icon')->default('')->comment('图片');
             $table->timestamps();
         });

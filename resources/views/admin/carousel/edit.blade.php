@@ -61,13 +61,13 @@
                     <div class="card-body">
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">轮播图名称</label>
+                            <label for="exampleInputEmail1">图片名</label>
                             <input type="text" name="name" value="{{$carousel['name']}}" class="form-control" id="exampleInputEmail1" placeholder="">
                         </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">图片样式</label>
-                            <input type="text" name="style" value="{{$carousel['style']}}"class="form-control"  id="exampleInputEmail1" placeholder="">
-                        </div>
+                        {{--<div class="form-group">--}}
+                            {{--<label for="exampleInputEmail1">图片样式</label>--}}
+                            {{--<input type="text" name="style" value="{{$carousel['style']}}"class="form-control"  id="exampleInputEmail1" placeholder="">--}}
+                        {{--</div>--}}
                         <div class="input-group mb-1">
                             <input class="form-control  form-control-sm" name='icon' readonly="" value="{{$carousel['icon']}}">
                             <div class="input-group-append">
