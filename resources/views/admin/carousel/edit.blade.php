@@ -45,40 +45,29 @@
         </div>
         <div class="row justify-content-center ">
            <div class="col-8 ">
-            <form method="post" action="">
-                {{--<div class="card">--}}
-                    {{--<div class="card-body">--}}
-                        {{--<div class="form-group">--}}
-                            {{--<label for="exampleInputEmail1">列表名</label>--}}
-                            {{--<input type="text" name="title" value="{{$carousel['name']}}" class="form-control" id="exampleInputEmail1" placeholder="">--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+            <form method="post" action="{{route('admin.carousels.update',$carousel)}}">
+                @csrf @method('PUT')
                 <div class="card">
-
-                    @csrf
-
                     <div class="card-body">
-
                         <div class="form-group">
                             <label for="exampleInputEmail1">图片名</label>
                             <input type="text" name="name" value="{{$carousel['name']}}" class="form-control" id="exampleInputEmail1" placeholder="">
                         </div>
-                        {{--<div class="form-group">--}}
-                            {{--<label for="exampleInputEmail1">图片样式</label>--}}
-                            {{--<input type="text" name="style" value="{{$carousel['style']}}"class="form-control"  id="exampleInputEmail1" placeholder="">--}}
-                        {{--</div>--}}
                         <div class="input-group mb-1">
-                            <input class="form-control  form-control-sm" name='icon' readonly="" value="{{$carousel['icon']}}">
+                            <input class="form-control  " name="icon" value="{{$carousel['icon']}}">
                             <div class="input-group-append">
-                                <button onclick="upImagePc(this)" class="btn btn-secondary"   type="button">单图上传</button>
+                                <button onclick="upImagePc(this)" class="btn btn-secondary" type="button">单图上传</button>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">保存</button>
-                        <textarea name="data" hidden id="" cols="30" rows="10"></textarea>
-
+                        <div style="display: inline-block;position: relative;">
+                            <img src="{{$carousel->icon}}" class="img-responsive img-thumbnail" width="40%">
+                            <em class="close" style="position: absolute;top: 3px;right: 8px;" title="删除这张图片"
+                                onclick="removeImg(this)">×</em>
+                        </div>
+                        <div class="col-sm-8 mt-3">
+                            <button type="submit" class="btn btn-primary">保存</button>
+                        </div>
                     </div>
-
                 </div>
             </form>
            </div>
@@ -99,7 +88,7 @@
                     // alert(1);
                     // 提交表单做头像修改
                     $("[name='icon']").val(images[0]);
-                    $(".avatar-img").attr('src', images[0]);
+                    $(".img-thumbnail").attr('src', images[0]);
                     $('#imgIcon').submit();
                 }, options)
             });

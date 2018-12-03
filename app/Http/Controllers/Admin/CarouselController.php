@@ -28,9 +28,13 @@ class CarouselController extends Controller
         //dd($request->all());
         $carousel->name = $request->name;
         $carousel->icon =$request->icon;
-//        Carousel::create($request->all());
         $carousel->save();
         return redirect()->route('admin.carousels.index')->with('success','添加成功');
+
+    }
+    //通过资源路由建立的控制器,即使不需要也不能删除
+    public function show(Carousel $carousel)
+    {
 
     }
     public function edit(Carousel $carousel)
@@ -39,7 +43,14 @@ class CarouselController extends Controller
         //dd($carousel->toArray());
         return view('admin.carousel.edit',compact('carousel'));
     }
+    //编辑数据
+    public function update(Request $request,Carousel $carousel)
+    {
 
+        $carousel->update($request->all());
+        return redirect()->route('admin.carousels.index')->with('success','编辑成功');
+
+    }
     public function destroy(Carousel $carousel)
     {
         //删除图片

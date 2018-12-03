@@ -68,8 +68,8 @@
                             <td>{{$carousel['id']}}</td>
                             <td>{{$carousel['name']}}</td>
                             {{--<td>{{$carousel['style']}}</td>--}}
-                            {{--<td><img src="{{$carousel->icon}}"></td>--}}
-                            <td>{{$carousel['icon']}}</td>
+                            <td><img style="width: 150px" src="{{$carousel->icon}}"></td>
+{{--                            <td>{{$carousel['icon']}}</td>--}}
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="First group">
                                     {{--<a href="/admin/category/{{$category['id']}}/edit" class="btn btn-white">编辑</a>--}}

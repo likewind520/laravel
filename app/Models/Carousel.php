@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Carousel extends Model
 {
-//    protected $fillable = ['name','size','icon'];
+    protected $fillable = ['name','icon'];
 }

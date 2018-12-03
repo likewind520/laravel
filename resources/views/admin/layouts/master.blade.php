@@ -93,7 +93,13 @@
                                     栏目管理
                                 </a>
                             </li>
+                            <li>
+                                <a href="{{route('admin.carousels.index')}}" class="nav-link">
+                                    轮播管理
+                                </a>
+                            </li>
                         </ul>
+
                     </div>
                 </li>
                 {{--文章系统--}}
@@ -123,9 +129,6 @@
                                 </a>
                                 <a href="{{route('admin.config.edit',['name'=>'wechat'])}}" class="nav-link">
                                     微信配置
-                                </a>
-                                <a href="{{route('admin.carousels.index')}}" class="nav-link">
-                                    轮播配置
                                 </a>
                             </li>
                         </ul>
