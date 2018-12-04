@@ -10,11 +10,12 @@ use App\Http\Controllers\Controller;
 
 class ButtonController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('admin.auth',[
+            'except'=>[],
+        ]);
+    }
     public function index()
     {
 
@@ -74,7 +75,10 @@ class ButtonController extends Controller
      */
     public function update(Request $request, Button $button)
     {
-        $button->update($request->all());
+        //编辑之后可以重新推送
+        $data = $request->all();
+        $data['status'] = 0;
+        $button->update($data);
         return redirect()->route('wechat.button.index')->with('success','编辑成功');
     }
 

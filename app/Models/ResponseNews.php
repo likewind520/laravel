@@ -4,9 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Keyword extends Model
+class ResponseNews extends Model
 {
-    protected $fillable = ['key','rule_id'];
+
+    //允许填充
+    protected $fillable = ['data','rule_id'];
+    //不允许填充
+    //protected $guarded = [];
     public function rule(){
         return $this->belongsTo(Rule::class);
     }

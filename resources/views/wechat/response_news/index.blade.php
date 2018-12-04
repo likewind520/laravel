@@ -9,7 +9,7 @@
                     <div class="col">
                         <!-- Title -->
                         <h2 class="header-title">
-                            微信文本回复
+                            图文回复
                         </h2>
 
                     </div>
@@ -21,13 +21,13 @@
                         <!-- Nav -->
                         <ul class="nav nav-tabs nav-overflow header-tabs">
                             <li class="nav-item">
-                                <a href="{{route('wechat.response_text.index')}}" class="nav-link active">
+                                <a href="{{route('wechat.response_news.index')}}" class="nav-link active">
                                     回复列表
                                 </a>
 
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('wechat.response_text.create')}}" class="nav-link ">
+                                <a href="{{route('wechat.response_news.create')}}" class="nav-link ">
                                     添加回复
                                 </a>
                             </li>
@@ -36,7 +36,7 @@
                     <div class="col-auto">
 
                         <!-- Buttons -->
-                        <a href="{{route('wechat.response_text.create')}}" class="btn btn-white btn-sm">
+                        <a href="{{route('wechat.response_news.create')}}" class="btn btn-white btn-sm">
                             添加回复
                         </a>
 
@@ -70,10 +70,10 @@
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="First group">
 
-                                    <a href="{{route('wechat.response_text.edit',$v)}}" class="btn btn-white">编辑</a>
+                                    <a href="{{route('wechat.response_news.edit',$v)}}" class="btn btn-white">编辑</a>
 
                                     <button onclick="del(this)" type="button" class="btn btn-white">删除</button>
-                                    <form action="{{route('wechat.response_text.destroy',$v)}}" method="post">
+                                    <form action="{{route('wechat.response_news.destroy',$v)}}" method="post">
                                         @csrf  @method('DELETE')
                                     </form>
                                 </div>

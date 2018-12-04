@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">icp</label>
-                                <input type="text" name="icp" class="form-control" value="{{$config['data']['icp']}} id="exampleInputEmail1" placeholder="">
+                                <input type="text" name="icp" class="form-control" value="{{$config['data']['icp']}}" id="exampleInputEmail1" placeholder="">
                             </div>
 
                             <button type="submit" class="btn btn-primary">保存</button>

@@ -8,7 +8,7 @@
                     <div class="col">
                         <!-- Title -->
                         <h2 class="header-title">
-                            微信基本回复
+                            微信文本回复
                         </h2>
 
                     </div>
@@ -78,9 +78,11 @@
                         {content:''}
                     ]
                 },
+                //页面一出来就会加载数据
                 mounted(){
                     this.emotion();
                 },
+                //页面更新后加载数据,未来数据的更新
                 updated(){
                     this.emotion();
                 },
@@ -89,11 +91,12 @@
                         var _this = this;
                         $('#keyword textarea').each(function () {
                             hdjs.emotion({
-                                //点击的元素，可以为任何元素触发
+                                //点击的元素，可以为任何元素触发,这里并不是点击事件,而是通过元素抓取(第三方封装好的)
                                 btn: $(this).prev('a'),
                                 //选中图标后填入的文本框
                                 input: $(this),
                                 //选择图标后执行的回调函数
+                                //回调函数不是非得用,这里用是为了将表情和vie同步
                                 callback: function (con, btn, input) {
                                     //sconsole.log('选择表情后的执行的回调函数');
                                     //获得 textarea 序号

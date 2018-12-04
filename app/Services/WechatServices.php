@@ -7,16 +7,17 @@ use Houdunwang\WeChat\WeChat;
 
 class WechatServices{
     //微信通信绑定
-//    public function __construct()
-//    {
+    public function __construct()
+    {
         //与微信通信绑定
 		//读取 config/hd_config.php配置文件
 		//config()读取框架配置项,框架配置项读取 env 对应数据,env 数据来源我们自己后台
         //config函数是框架
-//        $config = config('hd_wechat');
-//        WeChat::config($config);
-//        WeChat::valid();
-//    }
+        $config = config('hd_wechat');
+        //dd($config);
+        WeChat::config($config);
+        WeChat::valid();
+    }
     //加载规则视图文件
     public function ruleView($rule_id = 0){
         //dd($rule_id);
@@ -32,7 +33,7 @@ class WechatServices{
         return view('wechat.layouts.rule',compact('ruleData'));
     }
     //添加数据
-    public function ruleStore(){
+    public function ruleStore($type){
         $post = request()->all();
         //dd($post);
         //讲 post 提交来的 rule 数据转为数组格式
@@ -42,7 +43,7 @@ class WechatServices{
             'name'=>'required'
         ],['name.required'=>'规则名称不能为空'])->validate();
         //添加进数据库
-        $ruleModel = Rule::create(['name'=>$rule['name']]);
+        $ruleModel = Rule::create(['name'=>$rule['name'],'type'=>$type]);
         //关键词表添加
         foreach ($rule['keywords'] as $value){
             Keyword::create([
@@ -57,7 +58,9 @@ class WechatServices{
     public function ruleUpdate($rule_id){
         //执行规则表的编辑
         $rule = Rule::find($rule_id);
+        //dd($rule);
         $post = request()->all();
+        //dd($post);
         $ruleData = json_decode($post['rule'],true);
         $rule->update(['name'=>$ruleData['name']]);
         //关键词表编辑

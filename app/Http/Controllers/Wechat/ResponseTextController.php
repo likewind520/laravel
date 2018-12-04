@@ -10,11 +10,12 @@ use DB;
 
 class ResponseTextController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('admin.auth',[
+            'except'=>[],
+        ]);
+    }
     //加载首页模板页面
     public function index()
     {
@@ -42,7 +43,7 @@ class ResponseTextController extends Controller
         //dd($request->all());
         //开启事务
         DB::beginTransaction();
-        $rule = $wechatServices->ruleStore();
+        $rule = $wechatServices->ruleStore('text');
         //添加回复内容
         ResponseText::create([
             'content'=>$request['data'],
