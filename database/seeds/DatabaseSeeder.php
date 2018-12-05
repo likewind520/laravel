@@ -12,8 +12,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //注册
-         $this->call(UsersTableSeeder::class);
-         $this->call(CategoryTableSeed::class);
-         $this->call(ArticleTableSeed::class);
+        $this->call(UsersTableSeeder::class);
+        $this->call(CategoryTableSeed::class);
+        $this->call(ArticleTableSeed::class);
+        $this->call(RoleTableSeeder::class);
+
     }
 }

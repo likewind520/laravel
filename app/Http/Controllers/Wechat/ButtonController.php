@@ -37,6 +37,11 @@ class ButtonController extends Controller
     public function store(Request $request)
     {
         //dd($request->all());
+        $this->validate($request,[
+            'title'=>'required',
+        ],[
+            'title.required'=>'请输入菜单标题',
+        ]);
        Button::create($request->all());
        //dd(Button::create($request->all()));
        return redirect()->route('wechat.button.index')->with('success','菜单添加成功');

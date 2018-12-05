@@ -8,11 +8,12 @@ use App\Http\Controllers\Controller;
 
 class ResponseBaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('admin.auth',[
+            'except'=>[],
+        ]);
+    }
     public function index()
     {
 

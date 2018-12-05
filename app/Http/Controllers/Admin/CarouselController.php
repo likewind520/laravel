@@ -26,6 +26,11 @@ class CarouselController extends Controller
     {
         //添加到数据库保存
         //dd($request->all());
+        $this->validate($request,[
+            'name'=>'required'
+        ],[
+            'name.required'=>'请输入图片名'
+        ]);
         $carousel->name = $request->name;
         $carousel->icon =$request->icon;
         $carousel->save();
@@ -46,7 +51,11 @@ class CarouselController extends Controller
     //编辑数据
     public function update(Request $request,Carousel $carousel)
     {
-
+        $this->validate($request,[
+            'name'=>'required'
+        ],[
+            'name.required'=>'请输入图片名'
+        ]);
         $carousel->update($request->all());
         return redirect()->route('admin.carousels.index')->with('success','编辑成功');
 

@@ -108,5 +108,11 @@ Route::group(['prefix'=>'wechat','namespace'=>'Wechat','as'=>'wechat.'],function
     Route::resource('response_base','ResponseBaseController');
 
 });
+//权限管理
+Route::group(['prefix'=>'role','namespace'=>'Role','as'=>'role.'],function() {
+    Route::get('permission/index','PermissionController@index')->name('permission.index');
+    Route::get('permission/forget_permission_cache','PermissionController@forgetPermissionCache')->name('permission.forget_permission_cache');
+    Route::resource('role','RoleController');
+});
 
 
