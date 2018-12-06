@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Role;
 
+use App\Models\Module;
 use Spatie\Permission\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,6 +14,12 @@ class RoleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('admin.auth',[
+            'except'=>[],
+        ]);
+    }
     public function index()
     {
         //获取所有角色
@@ -53,23 +60,6 @@ class RoleController extends Controller
         return redirect()->route('role.role.index')->with('success','添加成功');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Spatie\Permission\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Role $role)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Spatie\Permission\Models\Role  $role
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Role $role)
     {
 
@@ -97,5 +87,23 @@ class RoleController extends Controller
         $role->delete();
         return redirect()->route('role.role.index')->with('success','更新成功');
 
+    }
+
+    //加载设置权限模板
+    public function show(Role $role)
+    {
+        //dd(1);
+        //获取所有模块以及权限,获取的 modules 所有数据
+        $modules = Module::all();
+        //dd($modules->all());
+        return view('role.role.set_permission',compact('role','modules'));
+    }
+    //设置权限的提交数据
+    public function setRolePermission(Role $role,Request $request){
+
+        //dd(1);
+        //给角色同步设置权限
+        $role->syncPermissions($request->permissions);
+        return redirect()->route('role.role.index')->with('success', '操作成功');
     }
 }

@@ -82,10 +82,12 @@
                 </li>
 
                 {{--文章系统--}}
+                @role('article-master|webmaster')
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarPages" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
                         <i class="fe fe-file"></i> 文章系统
                     </a>
+
                     <div class="collapse" id="sidebarPages">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
@@ -102,9 +104,11 @@
 
                     </div>
                 </li>
+                @endrole
                 {{--文章系统--}}
 
                 {{--后台配置项--}}
+                @role('site-master|webmaster')
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="#sidebarLayouts" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
                         <i class="fe fe-layout"></i> 网站配置
@@ -134,7 +138,9 @@
                         </ul>
                     </div>
                 </li>
+                @endrole
                 {{--后台配置项--}}
+                @role('whcat-master|webmaster')
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarWechat" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fe fe-message-square"></i> 微信管理
@@ -164,6 +170,9 @@
                         </ul>
                     </div>
                 </li>
+
+                @endrole
+                @role('webmaster')
                 <li class="nav-item">
                     <a class="nav-link" href="#sidebarAuth" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
                         <i class="fe fe-user"></i> 权限管理
@@ -171,7 +180,7 @@
                     <div class="collapse show" id="sidebarAuth">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#sidebarSignIn" class="nav-link" >
+                                <a href="{{route('role.user.index')}}" class="nav-link" >
                                     用户管理
                                 </a>
                                 <a href="{{route('role.role.index')}}" class="nav-link" >
@@ -184,6 +193,7 @@
                         </ul>
                     </div>
                 </li>
+                @endrole
                 <li class="nav-item d-md-none">
                     <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
                         <span class="fe fe-bell"></span> Notifications

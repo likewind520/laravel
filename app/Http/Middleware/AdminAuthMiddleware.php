@@ -18,7 +18,10 @@ class AdminAuthMiddleware
     {
         //dd(1);
         //如果没有登录或不是管理员就让退回到home主页面
-        if (!auth()->check() || auth()->user()->is_admin != 1) {
+//        if (!auth()->check() || auth()->user()->is_admin != 1) {
+//            return redirect()->route('home');
+//        }
+        if(!auth()->check() || !auth()->user()->can('Admin-admin-index')){
             return redirect()->route('home');
         }
 

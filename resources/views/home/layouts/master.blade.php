@@ -425,7 +425,8 @@
                     <!-- Menu -->
                     <div class="dropdown-menu dropdown-menu-right">
                         <a href="{{route('member.user.show',auth()->user())}}" class="dropdown-item">{{auth()->user()->name}}</a>
-                        @can('view',auth()->user())
+                        {{--只有你拥有后台管理的角色才能进到后台页面--}}
+                        @can('Admin-admin-index')
                             <a href="{{route('admin.index')}}" class="dropdown-item">后台管理</a>
                         @endcan
                         <hr class="dropdown-divider">

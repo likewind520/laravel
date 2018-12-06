@@ -64,13 +64,15 @@
                             <td>{{$role->title}}</td>
                             <td>{{$role->name}}</td>
                             <td>
-                                <div class="btn-group btn-group-sm" role="group" aria-label="First group">
-                                    <a href="" class="btn btn-white">设置权限</a>
+                                {{--@if('webmaster'==$role['name']) hidden  @endif--}}
+                                <div class="btn-group btn-group-sm" role="group" aria-label="First group" >
+                                    <a href="{{route('role.role.show',$role)}}" class="btn btn-white">设置权限</a>
                                     <a href="{{route('role.role.edit',$role)}}" class="btn btn-white">编辑</a>
                                     <button onclick="del(this)" type="button" class="btn btn-white">删除</button>
                                     <form action="{{route('role.role.destroy',$role)}}" method="post">
                                         @csrf @method('DELETE')
                                     </form>
+
                                 </div>
                             </td>
                         </tr>
