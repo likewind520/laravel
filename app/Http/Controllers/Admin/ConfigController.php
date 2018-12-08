@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 
 class ConfigController extends Controller
 {
+
     //加载模板页面
     // 并没有指点模型创建控制器 $name是路由中携带的参数,而这个参数是通过模板页面中的第二个参数的传递
     public function edit($name){
