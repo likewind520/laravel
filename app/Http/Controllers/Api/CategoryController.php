@@ -11,7 +11,8 @@ class CategoryController extends CommonController
     public function categories(){
 //        sleep(3);
 //        return Category::all();
-
-        return $this->response->array(Category::all());
+        $limit = request()->query('limit',100);
+        return $this->response->array(Category::limit($limit)->get());
+//        return $this->response->array(Category::all());
     }
 }

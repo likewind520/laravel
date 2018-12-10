@@ -11,8 +11,9 @@ class CarouselController extends CommonController
     public function carousels(){
         //return 11;
         //return Carousel::all();
-
-        return $this->response->array(Carousel::all());
-
+        //$limit是想要截取的默认的10条数据
+        $limit = request()->query('limit',10);
+        //return $limit;
+        return $this->response->array(Carousel::limit($limit)->get());
     }
 }

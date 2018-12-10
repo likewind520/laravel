@@ -18,11 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 $api=app(\Dingo\Api\Routing\Router::class);
 $api->version('v1', ['namespace' => '\App\Http\Controllers\Api'],function ($api) {
-//    $api->get('version', function () {
-//        return 'v1';
-//    });
+    $api->get('version', function () {
+        return 'v1';
+    });
     //获取文章数据
     $api->get('articles','ArticleController@articles');
+    $api->get('show/{id}', 'ArticleController@show');
     //获取栏目数据
     $api->get('categories', 'CategoryController@categories');
     //获取轮播图数据
